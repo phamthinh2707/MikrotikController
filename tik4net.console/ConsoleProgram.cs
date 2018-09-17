@@ -55,7 +55,7 @@ namespace tik4net.console
                 }
                 while (true);
             }
-
+            
             Console.WriteLine("Press [ENTER] to close.");
             Console.ReadLine();
         }

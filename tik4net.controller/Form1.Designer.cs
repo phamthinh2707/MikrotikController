@@ -38,6 +38,7 @@
             this.lblHost = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
+            this.btnConnect = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -69,7 +70,7 @@
             // 
             this.btnSubmit.Location = new System.Drawing.Point(454, 357);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(178, 20);
+            this.btnSubmit.Size = new System.Drawing.Size(87, 20);
             this.btnSubmit.TabIndex = 3;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -124,11 +125,22 @@
             this.lblPassword.TabIndex = 10;
             this.lblPassword.Text = "Password:";
             // 
+            // btnConnect
+            // 
+            this.btnConnect.Location = new System.Drawing.Point(545, 357);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(87, 20);
+            this.btnConnect.TabIndex = 11;
+            this.btnConnect.Text = "Connect";
+            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnConnect_MouseClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(647, 386);
+            this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.lblHost);
@@ -158,6 +170,7 @@
         private System.Windows.Forms.Label lblHost;
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.Button btnConnect;
     }
 }
 
