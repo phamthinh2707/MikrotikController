@@ -21,66 +21,64 @@ namespace tik4net.controller
             InitializeComponent();
         }
 
-        private void btnSubmit_MouseClick(object sender, MouseEventArgs e)
-        {
-            {
-                connection.OnReadRow += Connection_OnReadRow;
-                connection.OnWriteRow += Connection_OnWriteRow;
-                connection.Open(ConfigurationManager.AppSettings["host"], ConfigurationManager.AppSettings["user"], ConfigurationManager.AppSettings["pass"]);
+        private void btnSubmit_MouseClick(object sender, MouseEventArgs e){
+            string host = this.txtHost.Text;
+            string user = this.txtUser.Text;
+            string password = this.txtPassword.Text;
+            this.rtxDisplay.Text = this.txtCommand.Text + host + user + password;
 
-                List<string> commandRows = new List<string>();
-                string command;
-                Console.WriteLine("MIKROTIK CONTROLLER");
-                Console.WriteLine("Write command and press [ENTER] on empty line");
-                Console.WriteLine("Empty command + [ENTER] stops console.");
-                do
-                {
-                    command = Console.ReadLine();
 
-                    if (!string.IsNullOrWhiteSpace(command))
-                        commandRows.Add(command);
-                    else
-                    {
-                        if (commandRows.Any())
-                        {
-                            List<string> rows = new List<string>();
-                            foreach (string row in commandRows)
-                            {
-                                rows.AddRange(row.Split('|').Where(r => !string.IsNullOrEmpty(r)));
-                            }
-                            var result = connection.CallCommandSync(rows.ToArray());
-                            foreach (var resultItem in result)
-                                foreach (var word in resultItem.Words)
-                                    Console.WriteLine(word);
+            //connection.onreadrow += connection_onreadrow;
+            //connection.onwriterow += connection_onwriterow;
+            //connection.open(configurationmanager.appsettings[host], configurationmanager.appsettings[user], configurationmanager.appsettings[password]);
 
-                            commandRows.Clear();
-                        }
-                        else
-                        {
-                            break; //empty row and empty command -> end
-                        }
+            //List<string> commandRows = new List<string>();
+            //string command;
+            //Console.WriteLine("MIKROTIK CONTROLLER");
+            //Console.WriteLine("Write command and press [ENTER] on empty line");
+            //Console.WriteLine("Empty command + [ENTER] stops console.");
+            //do
+            //{
+            //    command = Console.ReadLine();
+            //    if (!string.IsNullOrWhiteSpace(command))
+            //        commandRows.Add(command);
+            //    else
+            //    {
+            //        if (commandRows.Any())
+            //        {
+            //            List<string> rows = new List<string>();
+            //            foreach (string row in commandRows)
+            //            {
+            //                rows.AddRange(row.Split('|').Where(r => !string.IsNullOrEmpty(r)));
+            //            }
+            //            var result = connection.CallCommandSync(rows.ToArray());
+            //            foreach (var resultItem in result)
+            //                foreach (var word in resultItem.Words)
+            //                    Console.WriteLine(word);
 
-                    }
-
-                }
-                while (true);
-            }
+            //            commandRows.Clear();
+            //        }
+            //        else
+            //        {
+            //            break; //empty row and empty command -> end
+            //        }
+            //    }
+            //}
+            //while (true);
         }
 
-        private static void Connection_OnWriteRow(object sender, TikConnectionCommCallbackEventArgs args)
-        {
-            Console.BackgroundColor = ConsoleColor.Magenta;
-            Console.WriteLine(">" + args.Word);
-            Console.BackgroundColor = ConsoleColor.Black;
-        }
+        //private static void Connection_OnWriteRow(object sender, TikConnectionCommCallbackEventArgs args)
+        //{
+        //    Console.BackgroundColor = ConsoleColor.Magenta;
+        //    Console.WriteLine(">" + args.Word);
+        //    Console.BackgroundColor = ConsoleColor.Black;
+        //}
 
-        private static void Connection_OnReadRow(object sender, TikConnectionCommCallbackEventArgs args)
-        {
-            Console.BackgroundColor = ConsoleColor.Green;
-            Console.WriteLine("<" + args.Word);
-            Console.BackgroundColor = ConsoleColor.Black;
-        }
+        //private static void Connection_OnReadRow(object sender, TikConnectionCommCallbackEventArgs args)
+        //{
+        //    Console.BackgroundColor = ConsoleColor.Green;
+        //    Console.WriteLine("<" + args.Word);
+        //    Console.BackgroundColor = ConsoleColor.Black;
+        //}
     }
-
-
 }
