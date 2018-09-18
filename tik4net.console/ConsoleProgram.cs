@@ -25,7 +25,7 @@ namespace tik4net.console
                 Console.WriteLine("Empty command + [ENTER] stops console.");
                 do
                 {
-                    command = Console.ReadLine();
+                     command = Console.ReadLine();
 
                     if (!string.IsNullOrWhiteSpace(command))
                         commandRows.Add(command);

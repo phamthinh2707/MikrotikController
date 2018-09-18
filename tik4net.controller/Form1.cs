@@ -26,18 +26,29 @@ namespace tik4net.controller
         //
         private void btnSubmit_MouseClick(object sender, MouseEventArgs e)
         {
+<<<<<<< HEAD
             string command = txtCommand.Text;
             ExecuteCommand(command);
+=======
+            string command = this.txtCommand.Text;
+            this.ExecuteCommand(command);
+>>>>>>> 30c02376b6756d6da1961224b946617c0026eb37
         }
 
         //
         private void ExecuteCommand(string commandStr)
         {
+<<<<<<< HEAD
             List<string> commandRows = new List<string>();
             if (!string.IsNullOrWhiteSpace(commandStr))
                 commandRows.Add(commandStr);
             else
             {
+=======
+                if (!string.IsNullOrWhiteSpace(commandStr))
+                    commandRows.Add(commandStr);
+
+>>>>>>> 30c02376b6756d6da1961224b946617c0026eb37
                 if (commandRows.Any())
                 {
                     List<string> rows = new List<string>();
@@ -51,8 +62,10 @@ namespace tik4net.controller
                             rtxDisplay.Text += word;
 
                     commandRows.Clear();
+                txtCommand.Text = "";
+
                 }
-            }
+
         }
 
         //
@@ -66,7 +79,13 @@ namespace tik4net.controller
             connection.OnWriteRow += Connection_OnWriteRow;
             connection.Open(host, user, password);
             lblStatus.Text = "Connected";
+<<<<<<< HEAD
             lblStatus.ForeColor = Color.Green;
+=======
+            lblStatus.ForeColor = System.Drawing.Color.Green;
+
+
+>>>>>>> 30c02376b6756d6da1961224b946617c0026eb37
         }
 
         //
