@@ -25,7 +25,7 @@ namespace tik4net.console
                 Console.WriteLine("Empty command + [ENTER] stops console.");
                 do
                 {
-                     command = Console.ReadLine();
+                    command = Console.ReadLine();
 
                     if (!string.IsNullOrWhiteSpace(command))
                         commandRows.Add(command);
@@ -34,13 +34,13 @@ namespace tik4net.console
                         if (commandRows.Any())
                         {
                             List<string> rows = new List<string>();
-                            foreach(string row in commandRows)
+                            foreach (string row in commandRows)
                             {
                                 rows.AddRange(row.Split('|').Where(r => !string.IsNullOrEmpty(r)));
                             }
                             var result = connection.CallCommandSync(rows.ToArray());
                             foreach (var resultItem in result)
-                                foreach(var word in resultItem.Words)
+                                foreach (var word in resultItem.Words)
                                     Console.WriteLine(word);
 
                             commandRows.Clear();
@@ -51,11 +51,11 @@ namespace tik4net.console
                         }
 
                     }
-                        
+
                 }
                 while (true);
             }
-            
+
             Console.WriteLine("Press [ENTER] to close.");
             Console.ReadLine();
         }

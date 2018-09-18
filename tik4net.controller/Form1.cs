@@ -26,47 +26,27 @@ namespace tik4net.controller
         //
         private void btnSubmit_MouseClick(object sender, MouseEventArgs e)
         {
-<<<<<<< HEAD
             string command = txtCommand.Text;
             ExecuteCommand(command);
-=======
-            string command = this.txtCommand.Text;
-            this.ExecuteCommand(command);
->>>>>>> 30c02376b6756d6da1961224b946617c0026eb37
         }
 
         //
         private void ExecuteCommand(string commandStr)
         {
-<<<<<<< HEAD
-            List<string> commandRows = new List<string>();
             if (!string.IsNullOrWhiteSpace(commandStr))
                 commandRows.Add(commandStr);
-            else
+            if (commandRows.Any())
             {
-=======
-                if (!string.IsNullOrWhiteSpace(commandStr))
-                    commandRows.Add(commandStr);
-
->>>>>>> 30c02376b6756d6da1961224b946617c0026eb37
-                if (commandRows.Any())
+                List<string> rows = new List<string>();
+                foreach (string row in commandRows)
                 {
-                    List<string> rows = new List<string>();
-                    foreach (string row in commandRows)
-                    {
-                        rows.AddRange(row.Split('|').Where(r => !string.IsNullOrEmpty(r)));
-                    }
-                    var result = connection.CallCommandSync(rows.ToArray());
-                    foreach (var resultItem in result)
-                        foreach (var word in resultItem.Words)
-                            rtxDisplay.Text += word;
-
-                    commandRows.Clear();
-                txtCommand.Text = "";
-
+                    rows.AddRange(row.Split('|').Where(r => !string.IsNullOrEmpty(r)));
                 }
-
+                var result = connection.CallCommandSync(rows.ToArray());
+                commandRows.Clear();
+            }
         }
+
 
         //
         private void btnConnect_MouseClick(object sender, MouseEventArgs e)
@@ -79,13 +59,7 @@ namespace tik4net.controller
             connection.OnWriteRow += Connection_OnWriteRow;
             connection.Open(host, user, password);
             lblStatus.Text = "Connected";
-<<<<<<< HEAD
             lblStatus.ForeColor = Color.Green;
-=======
-            lblStatus.ForeColor = System.Drawing.Color.Green;
-
-
->>>>>>> 30c02376b6756d6da1961224b946617c0026eb37
         }
 
         //
@@ -98,6 +72,20 @@ namespace tik4net.controller
         private void Connection_OnReadRow(object sender, TikConnectionCommCallbackEventArgs args)
         {
             rtxDisplay.Text += (args.Word + "\n");
+        }
+
+        private void txtCommand_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                commandRows.Add(txtCommand.Text);
+                List<string> rows = new List<string>();
+                foreach (string row in commandRows)
+                {
+                    rtxDisplay.Text = txtCommand.Text + "\n";
+                }
+                    txtCommand.Text = "";   
+            }
         }
     }
 }

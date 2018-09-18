@@ -66,6 +66,7 @@
             this.txtCommand.Name = "txtCommand";
             this.txtCommand.Size = new System.Drawing.Size(431, 20);
             this.txtCommand.TabIndex = 1;
+            this.txtCommand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCommand_KeyPress);
             // 
             // btnSubmit
             // 
@@ -83,6 +84,7 @@
             this.txtHost.Name = "txtHost";
             this.txtHost.Size = new System.Drawing.Size(178, 20);
             this.txtHost.TabIndex = 5;
+            this.txtHost.Text = "192.168.88.1";
             // 
             // txtUser
             // 
@@ -90,6 +92,7 @@
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(178, 20);
             this.txtUser.TabIndex = 6;
+            this.txtUser.Text = "admin";
             // 
             // txtPassword
             // 
