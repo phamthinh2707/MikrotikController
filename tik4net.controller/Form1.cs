@@ -16,101 +16,68 @@ namespace tik4net.controller
     public partial class Form1 : Form
     {
         private ITikConnection connection = ConnectionFactory.CreateConnection(TikConnectionType.Api);
-        private string command;
         private List<string> commandRows = new List<string>();
+
         public Form1()
         {
             InitializeComponent();
         }
-
+        
+        //
         private void btnSubmit_MouseClick(object sender, MouseEventArgs e)
         {
-            do
-            {
-                if (this.txtHost.Text.IsNullOrWhiteSpace())
-                {
-                    this.txtCommand.Text = "Please connect to your Mikrotik Router first";
-                }
-                else
-                {
-                    command = this.txtCommand.Text;
-                    if (!string.IsNullOrWhiteSpace(command))
-                        commandRows.Add(command);
-                    else
-                    {
-                        if (commandRows.Any())
-                        {
-                            List<string> rows = new List<string>();
-                            foreach (string row in commandRows)
-                            {
-                                rows.AddRange(row.Split('|').Where(r => !string.IsNullOrEmpty(r)));
-                            }
-                            var result = connection.CallCommandSync(rows.ToArray());
-                            foreach (var resultItem in result)
-                                foreach (var word in resultItem.Words)
-                                    this.rtxDisplay.Text += word;
-
-                            commandRows.Clear();
-                        }
-                        else
-                        {
-                            break; //empty row and empty command -> end
-                        }
-                    }
-                }
-            } while (true);
+            string command = txtCommand.Text;
+            this.ExecuteCommand(command);
         }
+        
+        //
+        private void ExecuteCommand(string commandStr)
+        {
+            if (!string.IsNullOrWhiteSpace(commandStr))
+                commandRows.Add(commandStr);
+            else
+            {
+                if (commandRows.Any())
+                {
+                    List<string> rows = new List<string>();
+                    foreach (string row in commandRows)
+                    {
+                        rows.AddRange(row.Split('|').Where(r => !string.IsNullOrEmpty(r)));
+                    }
+                    var result = connection.CallCommandSync(rows.ToArray());
+                    foreach (var resultItem in result)
+                        foreach (var word in resultItem.Words)
+                            rtxDisplay.Text += word;
 
+                    commandRows.Clear();
+                }
+            }
+        }
+        
+        //
         private void btnConnect_MouseClick(object sender, MouseEventArgs e)
         {
-            string host = this.txtHost.Text;
-            string user = this.txtUser.Text;
-            string password = this.txtPassword.Text;
+            string host = txtHost.Text;
+            string user = txtUser.Text;
+            string password = txtPassword.Text;
 
             connection.OnReadRow += Connection_OnReadRow;
             connection.OnWriteRow += Connection_OnWriteRow;
             connection.Open(host, user, password);
-
-            this.btnConnect.Name = "Connected";
-
-            do
-            {
-                command = this.txtCommand.Text;
-                if (!string.IsNullOrWhiteSpace(command))
-                    commandRows.Add(command);
-                else
-                {
-                    if (commandRows.Any())
-                    {
-                        List<string> rows = new List<string>();
-                        foreach (string row in commandRows)
-                        {
-                            rows.AddRange(row.Split('|').Where(r => !string.IsNullOrEmpty(r)));
-                        }
-                        var result = connection.CallCommandSync(rows.ToArray());
-                        foreach (var resultItem in result)
-                            foreach (var word in resultItem.Words)
-                                this.rtxDisplay.Text += word;
-
-                        commandRows.Clear();
-                    }
-                    else
-                    {
-                        break; //empty row and empty command -> end
-                    }
-                }
-            }
-            while (true);
+            lblStatus.Text = "Connected";
+            lblStatus.ForeColor = System.Drawing.Color.Green;
         }
-
+        
+        //
         private void Connection_OnWriteRow(object sender, TikConnectionCommCallbackEventArgs args)
         {
-            this.rtxDisplay.Text += args.Word;
+            rtxDisplay.Text += args.Word;
         }
-
+        
+        //
         private void Connection_OnReadRow(object sender, TikConnectionCommCallbackEventArgs args)
         {
-            this.rtxDisplay.Text += (args.Word + "\n");
+            rtxDisplay.Text += (args.Word + "\n");
         }
     }
 }

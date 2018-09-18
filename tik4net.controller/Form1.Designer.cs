@@ -39,6 +39,7 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.btnConnect = new System.Windows.Forms.Button();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -135,11 +136,22 @@
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnConnect_MouseClick);
             // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.ForeColor = System.Drawing.Color.Crimson;
+            this.lblStatus.Location = new System.Drawing.Point(550, 341);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(82, 13);
+            this.lblStatus.TabIndex = 12;
+            this.lblStatus.Text = "Not Connected!";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(647, 386);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUser);
@@ -171,6 +183,7 @@
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Button btnConnect;
+        private System.Windows.Forms.Label lblStatus;
     }
 }
 
