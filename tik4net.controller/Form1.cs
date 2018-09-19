@@ -47,7 +47,6 @@ namespace tik4net.controller
             }
         }
 
-
         //
         private void btnConnect_MouseClick(object sender, MouseEventArgs e)
         {
