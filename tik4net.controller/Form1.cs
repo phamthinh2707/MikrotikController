@@ -54,12 +54,19 @@ namespace tik4net.controller
             string host = txtHost.Text;
             string user = txtUser.Text;
             string password = txtPassword.Text;
-
-            connection.OnReadRow += Connection_OnReadRow;
-            connection.OnWriteRow += Connection_OnWriteRow;
-            connection.Open(host, user, password);
-            lblStatus.Text = "Connected";
-            lblStatus.ForeColor = Color.Green;
+            try
+            {
+                connection.OnReadRow += Connection_OnReadRow;
+                connection.OnWriteRow += Connection_OnWriteRow;
+                connection.Open(host, user, password);
+                lblStatus.Text = "Connected";
+                lblStatus.ForeColor = System.Drawing.Color.Green;
+            }
+            catch (System.Net.Sockets.SocketException)
+            {
+                lblStatus.Text = "Failed to connect, please check the connection";
+                lblStatus.ForeColor = System.Drawing.Color.Red;
+            }
         }
 
         //
