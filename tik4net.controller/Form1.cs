@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using tik4net.Api;
 using tik4net;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace tik4net.controller
 {
@@ -17,7 +19,7 @@ namespace tik4net.controller
     {
         private ITikConnection connection = ConnectionFactory.CreateConnection(TikConnectionType.Api);
         private List<string> commandRows = new List<string>();
-
+        private OpenFileDialog openFileDialog1 = new OpenFileDialog();
         public Form1()
         {
             InitializeComponent();
@@ -28,7 +30,9 @@ namespace tik4net.controller
         {
             string command = txtCommand.Text;
             ExecuteCommand(command);
+            
         }
+        
 
         //
         private void ExecuteCommand(string commandStr)
@@ -47,6 +51,7 @@ namespace tik4net.controller
             }
         }
 
+
         //
         private void btnConnect_MouseClick(object sender, MouseEventArgs e)
         {
@@ -63,29 +68,23 @@ namespace tik4net.controller
             }
             catch (System.Net.Sockets.SocketException)
             {
-                if(host.IsNullOrWhiteSpace() && user.IsNullOrWhiteSpace())
-                {
-                    lblStatus.Text = "Host and User are required!";
-                    lblStatus.ForeColor = Color.Crimson;
-                }
-                else
-                {
-                    lblStatus.Text = "Failed to connect, please check the connection";
-                    lblStatus.ForeColor = Color.Crimson;
-                }
+                lblStatus.Text = "Failed to connect, please check the connection";
+                lblStatus.ForeColor = System.Drawing.Color.Red;
             }
         }
 
         //
         private void Connection_OnWriteRow(object sender, TikConnectionCommCallbackEventArgs args)
-        {
+        {            
             rtxDisplay.Text += (args.Word + "\n");
+            rtxDisplay.ForeColor = System.Drawing.Color.Magenta;
         }
 
         //
         private void Connection_OnReadRow(object sender, TikConnectionCommCallbackEventArgs args)
         {
             rtxDisplay.Text += (args.Word + "\n");
+            rtxDisplay.ForeColor = System.Drawing.Color.Green;
         }
 
         private void txtCommand_KeyPress(object sender, KeyPressEventArgs e)
@@ -99,6 +98,18 @@ namespace tik4net.controller
                     rtxDisplay.Text = txtCommand.Text + "\n";
                 }
                     txtCommand.Text = "";   
+            }
+        }
+
+        private void btnBrowser_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                System.IO.StreamReader sr = new System.IO.StreamReader(openFileDialog1.FileName);
+                var router = JsonConvert.DeserializeObject<dynamic>(sr.ReadToEnd());
+                txtHost.Text = router.host;
+                txtUser.Text = router.user;
+                txtPassword.Text = router.password;
             }
         }
     }
