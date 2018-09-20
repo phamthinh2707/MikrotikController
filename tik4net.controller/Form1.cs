@@ -63,8 +63,16 @@ namespace tik4net.controller
             }
             catch (System.Net.Sockets.SocketException)
             {
-                lblStatus.Text = "Failed to connect, please check the connection";
-                lblStatus.ForeColor = System.Drawing.Color.Red;
+                if(host.IsNullOrWhiteSpace() && user.IsNullOrWhiteSpace())
+                {
+                    lblStatus.Text = "Host and User are required!";
+                    lblStatus.ForeColor = Color.Crimson;
+                }
+                else
+                {
+                    lblStatus.Text = "Failed to connect, please check the connection";
+                    lblStatus.ForeColor = Color.Crimson;
+                }
             }
         }
 
