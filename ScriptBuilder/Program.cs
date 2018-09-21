@@ -21,6 +21,7 @@ namespace ScriptBuilder
         {
             @"C:\Users\firel\Desktop\Script1.txt",
             @"C:\Users\firel\Desktop\Script2.txt",
+            @"C:\Users\firel\Desktop\Script3.txt",
         };
 
         static void Main(string[] args)
@@ -29,17 +30,17 @@ namespace ScriptBuilder
             int i = 1;
             foreach (var item in ListScriptDirectories)
             {
-                
+
                 using (var stream = new StreamReader(item))
                 {
                     string line = stream.ReadLine();
-                    
+
                     listScript.Add(new Script()
                     {
                         ScriptIndex = i,
                         ScriptValue = line
                     });
-                    
+
                 }
                 i++;
             }

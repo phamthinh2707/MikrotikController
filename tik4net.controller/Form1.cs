@@ -30,7 +30,6 @@ namespace tik4net.controller
         {
             string command = txtCommand.Text;
             ExecuteCommand(command);
-            
         }
         
         //
@@ -110,5 +109,6 @@ namespace tik4net.controller
                 txtPassword.Text = router.password;
             }
         }
+
     }
 }
