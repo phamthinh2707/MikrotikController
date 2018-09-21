@@ -75,14 +75,12 @@ namespace tik4net.controller
         private void Connection_OnWriteRow(object sender, TikConnectionCommCallbackEventArgs args)
         {            
             rtxDisplay.Text += (args.Word + "\n");
-            rtxDisplay.ForeColor = System.Drawing.Color.Magenta;
         }
 
         //
         private void Connection_OnReadRow(object sender, TikConnectionCommCallbackEventArgs args)
         {
             rtxDisplay.Text += (args.Word + "\n");
-            rtxDisplay.ForeColor = System.Drawing.Color.Green;
         }
 
         private void txtCommand_KeyPress(object sender, KeyPressEventArgs e)
@@ -110,5 +108,6 @@ namespace tik4net.controller
                 txtPassword.Text = router.password;
             }
         }
+
     }
 }
