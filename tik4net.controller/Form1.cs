@@ -31,7 +31,7 @@ namespace tik4net.controller
             string command = txtCommand.Text;
             ExecuteCommand(command);
         }
-        
+
         //
         private void ExecuteCommand(string commandStr)
         {
@@ -49,6 +49,20 @@ namespace tik4net.controller
             }
         }
 
+
+        private void ExecuteParameterCommand(List<string> commandRows)
+        {
+            if (commandRows.Any())
+            {
+                List<string> rows = new List<string>();
+                foreach (string row in commandRows)
+                {
+                    rows.AddRange(row.Split('|').Where(r => !string.IsNullOrEmpty(r)));
+                }
+                var result = connection.CallCommandSync(rows.ToArray());
+                commandRows.Clear();
+            }
+        }
         //
         private void btnConnect_MouseClick(object sender, MouseEventArgs e)
         {
@@ -62,6 +76,7 @@ namespace tik4net.controller
                 connection.Open(host, user, password);
                 lblStatus.Text = "Connected";
                 lblStatus.ForeColor = System.Drawing.Color.Green;
+                tableOption.Visible = true;
             }
             catch (System.Net.Sockets.SocketException)
             {
@@ -72,7 +87,7 @@ namespace tik4net.controller
 
         //
         private void Connection_OnWriteRow(object sender, TikConnectionCommCallbackEventArgs args)
-        {            
+        {
             rtxDisplay.Text += (args.Word + "\n");
         }
 
@@ -92,10 +107,10 @@ namespace tik4net.controller
                 {
                     rtxDisplay.Text = txtCommand.Text + "\n";
                 }
-                    txtCommand.Text = "";   
+                txtCommand.Text = "";
             }
         }
-
+        //
         private void btnBrowser_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -107,6 +122,31 @@ namespace tik4net.controller
                 txtPassword.Text = router.password;
             }
         }
+        //
+        private void btnReboot_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you really want to reboot Router?", "Reboot Router", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                ExecuteCommand("/system/reboot");
+            }
+            else
+            {
+                MessageBox.Show("Action Cancelled!");
+            }
+        }
 
+        private void btnResetConfiguration_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you want to reset configuration Router?(No default)", "Reset Configuration", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                commandRows.Add("/system/reset-configuration");
+                commandRows.Add("=no-defaults=yes");
+                ExecuteParameterCommand(commandRows);
+            }
+            else
+            {
+                MessageBox.Show("");
+            }
+        }
     }
 }
