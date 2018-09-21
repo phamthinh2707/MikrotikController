@@ -33,7 +33,6 @@ namespace tik4net.controller
             
         }
         
-
         //
         private void ExecuteCommand(string commandStr)
         {
@@ -50,7 +49,6 @@ namespace tik4net.controller
                 commandRows.Clear();
             }
         }
-
 
         //
         private void btnConnect_MouseClick(object sender, MouseEventArgs e)
