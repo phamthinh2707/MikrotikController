@@ -327,7 +327,6 @@
             // 
             this.txtCommand.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtCommand.Location = new System.Drawing.Point(3, 459);
-            this.txtCommand.Multiline = true;
             this.txtCommand.Name = "txtCommand";
             this.txtCommand.Size = new System.Drawing.Size(719, 20);
             this.txtCommand.TabIndex = 1;

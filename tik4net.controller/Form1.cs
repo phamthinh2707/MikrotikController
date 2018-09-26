@@ -38,6 +38,7 @@ namespace tik4net.controller
         {
             string command = txtCommand.Text;
             ExecuteCommand(command);
+            txtCommand.Text = "";
         }
 
         //
