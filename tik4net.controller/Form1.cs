@@ -20,9 +20,17 @@ namespace tik4net.controller
         private ITikConnection connection = ConnectionFactory.CreateConnection(TikConnectionType.Api);
         private List<string> commandRows = new List<string>();
         private OpenFileDialog openFileDialog1 = new OpenFileDialog();
+        public delegate ITikConnection sendConnection(ITikConnection con);
+
         public Form1()
         {
             InitializeComponent();
+            if (lblStatus.Text.Equals("Disconnect") || lblStatus.Text.Equals("Not Connected!"))
+            {
+                btnSubmit.Enabled = false;
+                tableOption.Visible = false;
+                txtCommand.ReadOnly = true;
+            }
         }
 
         //
@@ -35,6 +43,7 @@ namespace tik4net.controller
         //
         private void ExecuteCommand(string commandStr)
         {
+
             if (!string.IsNullOrWhiteSpace(commandStr))
                 commandRows.Add(commandStr);
             if (commandRows.Any())
@@ -47,9 +56,10 @@ namespace tik4net.controller
                 var result = connection.CallCommandSync(rows.ToArray());
                 commandRows.Clear();
             }
+
         }
 
-
+        //
         private void ExecuteParameterCommand(List<string> commandRows)
         {
             if (commandRows.Any())
@@ -63,25 +73,41 @@ namespace tik4net.controller
                 commandRows.Clear();
             }
         }
+
+        //
+        // Connect Button
         //
         private void btnConnect_MouseClick(object sender, MouseEventArgs e)
         {
-            string host = txtHost.Text;
-            string user = txtUser.Text;
-            string password = txtPassword.Text;
-            try
+            string action = btnConnect.Text;
+            if (action == "Connect")
             {
-                connection.OnReadRow += Connection_OnReadRow;
-                connection.OnWriteRow += Connection_OnWriteRow;
-                connection.Open(host, user, password);
-                lblStatus.Text = "Connected";
-                lblStatus.ForeColor = System.Drawing.Color.Green;
-                tableOption.Visible = true;
+                string host = txtHost.Text;
+                string user = txtUser.Text;
+                string password = txtPassword.Text;
+                try
+                {
+                    connection.OnReadRow += Connection_OnReadRow;
+                    connection.OnWriteRow += Connection_OnWriteRow;
+                    connection.Open(host, user, password);
+                    lblStatus.Text = "Connected";
+                    lblStatus.ForeColor = System.Drawing.Color.Green;
+                    tableOption.Visible = true;
+                    btnSubmit.Enabled = true;
+                    txtCommand.ReadOnly = false;
+                    btnConnect.Text = "Disconnect";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
-            catch (System.Net.Sockets.SocketException)
+            else if (action == "Disconnect")
             {
-                lblStatus.Text = "Failed to connect, please check the connection";
-                lblStatus.ForeColor = System.Drawing.Color.Red;
+                connection.Close();
+                btnConnect.Text = "Connect";
+                lblStatus.Text = "Disconnect";
+                lblStatus.ForeColor = Color.Crimson;
             }
         }
 
@@ -97,19 +123,30 @@ namespace tik4net.controller
             rtxDisplay.Text += (args.Word + "\n");
         }
 
+        //
+        // Add command by Enter key
+        //
         private void txtCommand_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                commandRows.Add(txtCommand.Text);
-                List<string> rows = new List<string>();
-                foreach (string row in commandRows)
+                if (txtCommand.Text.Equals("clear"))
                 {
-                    rtxDisplay.Text = txtCommand.Text + "\n";
+                    rtxDisplay.Text = "";
                 }
-                txtCommand.Text = "";
+                else
+                {
+                    commandRows.Add(txtCommand.Text);
+                    List<string> rows = new List<string>();
+                    foreach (string row in commandRows)
+                    {
+                        rtxDisplay.Text = txtCommand.Text + "\n";
+                    }
+                    txtCommand.Text = "";
+                }
             }
         }
+
         //
         private void btnBrowser_Click(object sender, EventArgs e)
         {
@@ -122,6 +159,7 @@ namespace tik4net.controller
                 txtPassword.Text = router.password;
             }
         }
+
         //
         private void btnReboot_Click(object sender, EventArgs e)
         {
@@ -135,18 +173,14 @@ namespace tik4net.controller
             }
         }
 
+        //
+        // Show Reset Form and Tranfer Connection
+        //
         private void btnResetConfiguration_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Do you want to reset configuration Router?(No default)", "Reset Configuration", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                commandRows.Add("/system/reset-configuration");
-                commandRows.Add("=no-defaults=yes");
-                ExecuteParameterCommand(commandRows);
-            }
-            else
-            {
-                MessageBox.Show("");
-            }
+            Reset reset = new Reset();
+            reset.getter(connection);
+            reset.ShowDialog();
         }
     }
 }
