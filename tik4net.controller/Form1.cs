@@ -32,19 +32,19 @@ namespace tik4net.controller
                 txtCommand.ReadOnly = true;
             }
         }
-
         //
-        private void btnSubmit_MouseClick(object sender, MouseEventArgs e)
+        // Script Object
+        //
+        public class Script
         {
-            string command = txtCommand.Text;
-            ExecuteCommand(command);
-            txtCommand.Text = "";
+            public int ScriptIndex { get; set; }
+            public List<string> ScriptValue { get; set; }
         }
-
+        //
+        // Execute Command
         //
         private void ExecuteCommand(string commandStr)
         {
-
             if (!string.IsNullOrWhiteSpace(commandStr))
                 commandRows.Add(commandStr);
             if (commandRows.Any())
@@ -57,9 +57,9 @@ namespace tik4net.controller
                 var result = connection.CallCommandSync(rows.ToArray());
                 commandRows.Clear();
             }
-
         }
-
+        //
+        // Execute Command With Parameter
         //
         private void ExecuteParameterCommand(List<string> commandRows)
         {
@@ -74,9 +74,17 @@ namespace tik4net.controller
                 commandRows.Clear();
             }
         }
-
         //
-        // Connect Button
+        // Button Submit Commands
+        //
+        private void btnSubmit_MouseClick(object sender, MouseEventArgs e)
+        {
+            string command = txtCommand.Text;
+            ExecuteCommand(command);
+            txtCommand.Text = "";
+        }
+        //
+        // Button Connect
         //
         private void btnConnect_MouseClick(object sender, MouseEventArgs e)
         {
@@ -111,19 +119,20 @@ namespace tik4net.controller
                 lblStatus.ForeColor = Color.Crimson;
             }
         }
-
+        //
+        //
         //
         private void Connection_OnWriteRow(object sender, TikConnectionCommCallbackEventArgs args)
         {
             rtxDisplay.Text += (args.Word + "\n");
         }
-
+        //
+        //
         //
         private void Connection_OnReadRow(object sender, TikConnectionCommCallbackEventArgs args)
         {
             rtxDisplay.Text += (args.Word + "\n");
         }
-
         //
         // Add command by Enter key
         //
@@ -147,7 +156,8 @@ namespace tik4net.controller
                 }
             }
         }
-
+        //
+        // Button Browser File
         //
         private void btnBrowser_Click(object sender, EventArgs e)
         {
@@ -160,7 +170,8 @@ namespace tik4net.controller
                 txtPassword.Text = router.password;
             }
         }
-
+        //
+        // Button Reboot
         //
         private void btnReboot_Click(object sender, EventArgs e)
         {
@@ -173,7 +184,6 @@ namespace tik4net.controller
                 MessageBox.Show("Action Cancelled!");
             }
         }
-
         //
         // Show Reset Form and Tranfer Connection
         //
@@ -182,6 +192,34 @@ namespace tik4net.controller
             Reset reset = new Reset();
             reset.getter(connection);
             reset.ShowDialog();
+        }
+        //
+        // Open Wall Garden Dialog
+        //
+        private void btnWallGarden_Click(object sender, EventArgs e)
+        {
+            WalledGardenForm wallGarden = new WalledGardenForm();
+            wallGarden.getter(connection);
+            wallGarden.ShowDialog();
+        }
+        //
+        // Button Setup Wifi Marketing
+        //
+        private void btnWifiMarketing_Click(object sender, EventArgs e)
+        {
+            using (StreamReader stream = new StreamReader("C:/Users/firel/Desktop/ScriptWifiSplit.json"))
+            {
+                var str = stream.ReadToEnd();
+                var scripts = JsonConvert.DeserializeObject<List<Script>>(str);
+                foreach (Script command in scripts)
+                {
+                    foreach (string row in command.ScriptValue)
+                    {
+                        commandRows.Add(row);
+                    }
+                    ExecuteParameterCommand(commandRows);
+                }
+            }
         }
     }
 }

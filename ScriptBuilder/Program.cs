@@ -24,6 +24,7 @@ namespace ScriptBuilder
             "C:/Users/firel/Desktop/Script3.txt",
             "C:/Users/firel/Desktop/Script4.txt",
             "C:/Users/firel/Desktop/Script5.txt",
+            "C:/Users/firel/Desktop/Script-Wifi-Marketing-API.txt",
         };
 
         static void Main(string[] args)

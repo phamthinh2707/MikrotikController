@@ -39,7 +39,7 @@ namespace tik4net.Api
 
         private readonly object _writeLockObj = new object();
         private readonly object _readLockObj = new object();
-        private volatile bool _isOpened = false;
+        private volatile bool _isOpened;
         private bool _isSsl = false;
         private readonly LoginProcessVersion _loginProcessVersion;
         private Encoding _encoding = Encoding.ASCII;

@@ -171,7 +171,6 @@
             this.MinimumSize = new System.Drawing.Size(317, 188);
             this.Name = "Reset";
             this.Text = "Reset";
-            this.Load += new System.EventHandler(this.Reset_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);

@@ -35,7 +35,9 @@ namespace tik4net.controller
             public int ScriptIndex { get; set; }
             public List<string> ScriptValue { get; set; }
         }
-
+        //
+        // Execute Command
+        //
         private void ExecuteParameterCommand(List<string> commandRows)
         {
             if (commandRows.Any())
@@ -49,9 +51,14 @@ namespace tik4net.controller
                 commandRows.Clear();
             }
         }
-
+        //
+        // Button Reset
+        //
         private void btnResetConfiguration_Click(object sender, EventArgs e)
         {
+            //
+            // Reset Default Configuration
+            //
             if (radioResetNoDefault.Checked == true)
             {
                 using (StreamReader stream = new System.IO.StreamReader(@"C:\Users\firel\Desktop\Script.json"))
@@ -62,7 +69,9 @@ namespace tik4net.controller
                     Close();
                 }
             }
-
+            //
+            // Reset Keep User Configuration
+            //
             else if (radioResetKeepUserConfiguration.Checked == true)
             {
                 using (StreamReader stream = new System.IO.StreamReader(@"C:\Users\firel\Desktop\Script.json"))
@@ -73,7 +82,9 @@ namespace tik4net.controller
                     Close();
                 }
             }
-
+            //
+            // Reset CAPS Mode
+            //
             else if (radioResetCAPSMode.Checked == true)
             {
                 using (StreamReader stream = new System.IO.StreamReader(@"C:\Users\firel\Desktop\Script.json"))
@@ -85,7 +96,9 @@ namespace tik4net.controller
                     Close();
                 }
             }
-
+            //
+            // Reset Not Backup
+            //
             else if (radioResetNotBackup.Checked == true)
             {
                 using (StreamReader stream = new System.IO.StreamReader(@"C:\Users\firel\Desktop\Script.json"))
@@ -96,18 +109,17 @@ namespace tik4net.controller
                     Close();
                 }
             }
-
+            //
+            //
+            //
             else
             {
                 MessageBox.Show("Please Choose An Option To Perform!");
             }
         }
-
-        private void Reset_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        //
+        //
+        //
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();

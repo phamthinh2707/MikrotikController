@@ -241,6 +241,7 @@
             this.btnWifiMarketing.TabIndex = 2;
             this.btnWifiMarketing.Text = "Wifi Marketing";
             this.btnWifiMarketing.UseVisualStyleBackColor = true;
+            this.btnWifiMarketing.Click += new System.EventHandler(this.btnWifiMarketing_Click);
             // 
             // btnWallGarden
             // 
@@ -251,6 +252,7 @@
             this.btnWallGarden.TabIndex = 3;
             this.btnWallGarden.Text = "Walled Garden";
             this.btnWallGarden.UseVisualStyleBackColor = true;
+            this.btnWallGarden.Click += new System.EventHandler(this.btnWallGarden_Click);
             // 
             // btnNatPort
             // 
@@ -259,7 +261,7 @@
             this.btnNatPort.Name = "btnNatPort";
             this.btnNatPort.Size = new System.Drawing.Size(101, 26);
             this.btnNatPort.TabIndex = 4;
-            this.btnNatPort.Text = "Nat Port";
+            this.btnNatPort.Text = "NAT Port";
             this.btnNatPort.UseVisualStyleBackColor = true;
             // 
             // btnEncryptPassword
