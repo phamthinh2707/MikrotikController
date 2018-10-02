@@ -51,6 +51,7 @@
             this.btnSubmit = new System.Windows.Forms.Button();
             this.rtxDisplay = new System.Windows.Forms.RichTextBox();
             this.txtCommand = new System.Windows.Forms.TextBox();
+            this.btnMac = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableOption.SuspendLayout();
@@ -199,14 +200,16 @@
             this.tableOption.Controls.Add(this.btnWallGarden, 1, 1);
             this.tableOption.Controls.Add(this.btnNatPort, 0, 2);
             this.tableOption.Controls.Add(this.btnEncryptPassword, 1, 2);
+            this.tableOption.Controls.Add(this.btnMac, 0, 3);
             this.tableOption.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableOption.Location = new System.Drawing.Point(3, 139);
             this.tableOption.Name = "tableOption";
-            this.tableOption.RowCount = 3;
-            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableOption.Size = new System.Drawing.Size(214, 94);
+            this.tableOption.RowCount = 4;
+            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableOption.Size = new System.Drawing.Size(214, 112);
             this.tableOption.TabIndex = 12;
             this.tableOption.Visible = false;
             // 
@@ -215,7 +218,7 @@
             this.btnReboot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnReboot.Location = new System.Drawing.Point(3, 3);
             this.btnReboot.Name = "btnReboot";
-            this.btnReboot.Size = new System.Drawing.Size(101, 25);
+            this.btnReboot.Size = new System.Drawing.Size(101, 22);
             this.btnReboot.TabIndex = 0;
             this.btnReboot.Text = "Reboot";
             this.btnReboot.UseVisualStyleBackColor = true;
@@ -226,7 +229,7 @@
             this.btnResetConfiguration.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnResetConfiguration.Location = new System.Drawing.Point(110, 3);
             this.btnResetConfiguration.Name = "btnResetConfiguration";
-            this.btnResetConfiguration.Size = new System.Drawing.Size(101, 25);
+            this.btnResetConfiguration.Size = new System.Drawing.Size(101, 22);
             this.btnResetConfiguration.TabIndex = 1;
             this.btnResetConfiguration.Text = "Reset Setting";
             this.btnResetConfiguration.UseVisualStyleBackColor = true;
@@ -235,9 +238,9 @@
             // btnWifiMarketing
             // 
             this.btnWifiMarketing.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnWifiMarketing.Location = new System.Drawing.Point(3, 34);
+            this.btnWifiMarketing.Location = new System.Drawing.Point(3, 31);
             this.btnWifiMarketing.Name = "btnWifiMarketing";
-            this.btnWifiMarketing.Size = new System.Drawing.Size(101, 25);
+            this.btnWifiMarketing.Size = new System.Drawing.Size(101, 22);
             this.btnWifiMarketing.TabIndex = 2;
             this.btnWifiMarketing.Text = "Wifi Marketing";
             this.btnWifiMarketing.UseVisualStyleBackColor = true;
@@ -246,9 +249,9 @@
             // btnWallGarden
             // 
             this.btnWallGarden.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnWallGarden.Location = new System.Drawing.Point(110, 34);
+            this.btnWallGarden.Location = new System.Drawing.Point(110, 31);
             this.btnWallGarden.Name = "btnWallGarden";
-            this.btnWallGarden.Size = new System.Drawing.Size(101, 25);
+            this.btnWallGarden.Size = new System.Drawing.Size(101, 22);
             this.btnWallGarden.TabIndex = 3;
             this.btnWallGarden.Text = "Walled Garden";
             this.btnWallGarden.UseVisualStyleBackColor = true;
@@ -257,9 +260,9 @@
             // btnNatPort
             // 
             this.btnNatPort.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnNatPort.Location = new System.Drawing.Point(3, 65);
+            this.btnNatPort.Location = new System.Drawing.Point(3, 59);
             this.btnNatPort.Name = "btnNatPort";
-            this.btnNatPort.Size = new System.Drawing.Size(101, 26);
+            this.btnNatPort.Size = new System.Drawing.Size(101, 22);
             this.btnNatPort.TabIndex = 4;
             this.btnNatPort.Text = "NAT Port";
             this.btnNatPort.UseVisualStyleBackColor = true;
@@ -267,9 +270,9 @@
             // btnEncryptPassword
             // 
             this.btnEncryptPassword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEncryptPassword.Location = new System.Drawing.Point(110, 65);
+            this.btnEncryptPassword.Location = new System.Drawing.Point(110, 59);
             this.btnEncryptPassword.Name = "btnEncryptPassword";
-            this.btnEncryptPassword.Size = new System.Drawing.Size(101, 26);
+            this.btnEncryptPassword.Size = new System.Drawing.Size(101, 22);
             this.btnEncryptPassword.TabIndex = 5;
             this.btnEncryptPassword.Text = "Encrypt Password";
             this.btnEncryptPassword.UseVisualStyleBackColor = true;
@@ -334,6 +337,16 @@
             this.txtCommand.TabIndex = 1;
             this.txtCommand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCommand_KeyPress);
             // 
+            // btnMac
+            // 
+            this.btnMac.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnMac.Location = new System.Drawing.Point(3, 87);
+            this.btnMac.Name = "btnMac";
+            this.btnMac.Size = new System.Drawing.Size(101, 22);
+            this.btnMac.TabIndex = 6;
+            this.btnMac.Text = "Add MAC";
+            this.btnMac.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,6 +391,7 @@
         private System.Windows.Forms.Button btnWallGarden;
         private System.Windows.Forms.Button btnNatPort;
         private System.Windows.Forms.Button btnEncryptPassword;
+        private System.Windows.Forms.Button btnMac;
     }
 }
 
