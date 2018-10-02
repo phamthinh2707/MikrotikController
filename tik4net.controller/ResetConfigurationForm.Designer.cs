@@ -74,6 +74,7 @@
             // 
             // btnResetConfiguration
             // 
+            this.btnResetConfiguration.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResetConfiguration.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnResetConfiguration.Location = new System.Drawing.Point(3, 3);
             this.btnResetConfiguration.Name = "btnResetConfiguration";
@@ -85,6 +86,7 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCancel.Location = new System.Drawing.Point(150, 3);
             this.btnCancel.Name = "btnCancel";

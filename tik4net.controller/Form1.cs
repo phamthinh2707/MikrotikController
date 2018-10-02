@@ -12,6 +12,7 @@ using tik4net.Api;
 using tik4net;
 using Newtonsoft.Json;
 using System.IO;
+using System.Net.NetworkInformation;
 
 namespace tik4net.controller
 {
@@ -117,6 +118,9 @@ namespace tik4net.controller
                 btnConnect.Text = "Connect";
                 lblStatus.Text = "Disconnect";
                 lblStatus.ForeColor = Color.Crimson;
+                tableOption.Visible = false;
+                btnSubmit.Enabled = false;
+                txtCommand.ReadOnly = true;
             }
         }
         //
@@ -220,6 +224,21 @@ namespace tik4net.controller
                     ExecuteParameterCommand(commandRows);
                 }
             }
+        }
+
+        private void btnGetMAC_Click(object sender, EventArgs e)
+        {
+            NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
+            String MACAddress = string.Empty;
+            foreach(NetworkInterface adapter in nics)
+            {
+                if(MACAddress == String.Empty)
+                {
+                    IPInterfaceProperties properties = adapter.GetIPProperties();
+                    MACAddress = adapter.GetPhysicalAddress().ToString();
+                }
+            }
+            txtHost.Text = MACAddress;
         }
     }
 }

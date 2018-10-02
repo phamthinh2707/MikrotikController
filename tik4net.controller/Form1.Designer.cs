@@ -46,12 +46,12 @@
             this.btnWallGarden = new System.Windows.Forms.Button();
             this.btnNatPort = new System.Windows.Forms.Button();
             this.btnEncryptPassword = new System.Windows.Forms.Button();
+            this.btnGetMAC = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.rtxDisplay = new System.Windows.Forms.RichTextBox();
             this.txtCommand = new System.Windows.Forms.TextBox();
-            this.btnMac = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableOption.SuspendLayout();
@@ -169,6 +169,7 @@
             // 
             // btnConnect
             // 
+            this.btnConnect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConnect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnConnect.Location = new System.Drawing.Point(3, 79);
             this.btnConnect.Name = "btnConnect";
@@ -180,6 +181,7 @@
             // 
             // btnBrowser
             // 
+            this.btnBrowser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnBrowser.Location = new System.Drawing.Point(3, 110);
             this.btnBrowser.Name = "btnBrowser";
@@ -200,7 +202,7 @@
             this.tableOption.Controls.Add(this.btnWallGarden, 1, 1);
             this.tableOption.Controls.Add(this.btnNatPort, 0, 2);
             this.tableOption.Controls.Add(this.btnEncryptPassword, 1, 2);
-            this.tableOption.Controls.Add(this.btnMac, 0, 3);
+            this.tableOption.Controls.Add(this.btnGetMAC, 0, 3);
             this.tableOption.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableOption.Location = new System.Drawing.Point(3, 139);
             this.tableOption.Name = "tableOption";
@@ -215,6 +217,7 @@
             // 
             // btnReboot
             // 
+            this.btnReboot.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReboot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnReboot.Location = new System.Drawing.Point(3, 3);
             this.btnReboot.Name = "btnReboot";
@@ -226,6 +229,7 @@
             // 
             // btnResetConfiguration
             // 
+            this.btnResetConfiguration.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResetConfiguration.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnResetConfiguration.Location = new System.Drawing.Point(110, 3);
             this.btnResetConfiguration.Name = "btnResetConfiguration";
@@ -237,6 +241,7 @@
             // 
             // btnWifiMarketing
             // 
+            this.btnWifiMarketing.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnWifiMarketing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnWifiMarketing.Location = new System.Drawing.Point(3, 31);
             this.btnWifiMarketing.Name = "btnWifiMarketing";
@@ -248,6 +253,7 @@
             // 
             // btnWallGarden
             // 
+            this.btnWallGarden.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnWallGarden.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnWallGarden.Location = new System.Drawing.Point(110, 31);
             this.btnWallGarden.Name = "btnWallGarden";
@@ -259,6 +265,7 @@
             // 
             // btnNatPort
             // 
+            this.btnNatPort.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNatPort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnNatPort.Location = new System.Drawing.Point(3, 59);
             this.btnNatPort.Name = "btnNatPort";
@@ -269,6 +276,7 @@
             // 
             // btnEncryptPassword
             // 
+            this.btnEncryptPassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEncryptPassword.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEncryptPassword.Location = new System.Drawing.Point(110, 59);
             this.btnEncryptPassword.Name = "btnEncryptPassword";
@@ -276,6 +284,17 @@
             this.btnEncryptPassword.TabIndex = 5;
             this.btnEncryptPassword.Text = "Encrypt Password";
             this.btnEncryptPassword.UseVisualStyleBackColor = true;
+            // 
+            // btnGetMAC
+            // 
+            this.btnGetMAC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnGetMAC.Location = new System.Drawing.Point(3, 87);
+            this.btnGetMAC.Name = "btnGetMAC";
+            this.btnGetMAC.Size = new System.Drawing.Size(101, 22);
+            this.btnGetMAC.TabIndex = 6;
+            this.btnGetMAC.Text = "Get MAC";
+            this.btnGetMAC.UseVisualStyleBackColor = true;
+            this.btnGetMAC.Click += new System.EventHandler(this.btnGetMAC_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -309,6 +328,7 @@
             // 
             // btnSubmit
             // 
+            this.btnSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSubmit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSubmit.Location = new System.Drawing.Point(728, 459);
             this.btnSubmit.Name = "btnSubmit";
@@ -336,16 +356,6 @@
             this.txtCommand.Size = new System.Drawing.Size(719, 20);
             this.txtCommand.TabIndex = 1;
             this.txtCommand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCommand_KeyPress);
-            // 
-            // btnMac
-            // 
-            this.btnMac.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnMac.Location = new System.Drawing.Point(3, 87);
-            this.btnMac.Name = "btnMac";
-            this.btnMac.Size = new System.Drawing.Size(101, 22);
-            this.btnMac.TabIndex = 6;
-            this.btnMac.Text = "Add MAC";
-            this.btnMac.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -391,7 +401,7 @@
         private System.Windows.Forms.Button btnWallGarden;
         private System.Windows.Forms.Button btnNatPort;
         private System.Windows.Forms.Button btnEncryptPassword;
-        private System.Windows.Forms.Button btnMac;
+        private System.Windows.Forms.Button btnGetMAC;
     }
 }
 
