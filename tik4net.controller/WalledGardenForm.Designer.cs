@@ -31,14 +31,18 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtAddHost = new System.Windows.Forms.TextBox();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.clAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clDstHost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clHits = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.rtxDisplay = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +67,7 @@
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.txtAddHost, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.rtxDisplay, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.dataGridView, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -80,6 +84,37 @@
             this.txtAddHost.Name = "txtAddHost";
             this.txtAddHost.Size = new System.Drawing.Size(333, 20);
             this.txtAddHost.TabIndex = 1;
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clAction,
+            this.clDstHost,
+            this.clHits});
+            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView.Location = new System.Drawing.Point(3, 26);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.Size = new System.Drawing.Size(333, 370);
+            this.dataGridView.TabIndex = 2;
+            // 
+            // clAction
+            // 
+            this.clAction.HeaderText = "Action";
+            this.clAction.Name = "clAction";
+            this.clAction.ReadOnly = true;
+            // 
+            // clDstHost
+            // 
+            this.clDstHost.HeaderText = "Dst.Host";
+            this.clDstHost.Name = "clDstHost";
+            this.clDstHost.ReadOnly = true;
+            // 
+            // clHits
+            // 
+            this.clHits.HeaderText = "Hits";
+            this.clHits.Name = "clHits";
+            this.clHits.ReadOnly = true;
             // 
             // tableLayoutPanel3
             // 
@@ -141,15 +176,6 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // rtxDisplay
-            // 
-            this.rtxDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtxDisplay.Location = new System.Drawing.Point(3, 26);
-            this.rtxDisplay.Name = "rtxDisplay";
-            this.rtxDisplay.Size = new System.Drawing.Size(333, 370);
-            this.rtxDisplay.TabIndex = 2;
-            this.rtxDisplay.Text = "";
-            // 
             // WalledGardenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,6 +190,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -179,6 +206,9 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.RichTextBox rtxDisplay;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clAction;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clDstHost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clHits;
     }
 }

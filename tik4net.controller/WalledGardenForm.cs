@@ -28,6 +28,12 @@ namespace tik4net.controller
         {
             connection = conn;
         }
+
+        private class walledGardenItem
+        {
+            public string fieldName { get; set; }
+            public string value { get; set; }
+        }
         //
         // Execute Command
         //
@@ -66,9 +72,10 @@ namespace tik4net.controller
         //
         // Get Walled Garden 
         //
-        private List<string> getWalledGarden(List<string> command)
+        private List<walledGardenItem> getWalledGarden(List<string> command)
         {
-            List<string> walledGarden = null;
+            List<walledGardenItem> walledGarden = null;
+            walledGardenItem wl = new walledGardenItem();
             if (commandRows.Any())
             {
                 List<string> rows = new List<string>();
@@ -77,6 +84,13 @@ namespace tik4net.controller
                     rows.AddRange(row.Split('|').Where(r => !string.IsNullOrEmpty(r)));
                 }
                 var result = connection.CallCommandSync(rows.ToArray());
+                foreach (var resultItem in result)
+                    foreach (var word in resultItem.Words)
+                        {
+                        wl.fieldName = word.Key;
+                        wl.value = word.Value;
+                        walledGarden.Add(wl);
+                    }
                 commandRows.Clear();
             }
             return walledGarden;
@@ -89,7 +103,7 @@ namespace tik4net.controller
             commandRows.Add("/ip/hotspot/walled-garden/print");
             if (commandRows.Any())
             {
-                rtxDisplay.Text += getWalledGarden(commandRows);
+                getWalledGarden(commandRows);
             }
         }
     }
