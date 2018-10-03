@@ -17,7 +17,7 @@ namespace tik4net.controller
         private ITikConnection connection;
         public delegate void getConnection(ITikConnection conn);
         public getConnection getter;
-
+        
         public WalledGardenForm()
         {
             InitializeComponent();
@@ -70,29 +70,25 @@ namespace tik4net.controller
                 ExecuteCommand(commandRows);
             }
             commandRows.Add("/ip/hotspot/walled-garden/print");
-            getWalledGarden(commandRows);
+            displayListWalledGarden(getWalledGarden(commandRows));
         }
         //
         // Remove Dst_Host
         //
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            int number = dataGridView.CurrentCell.RowIndex;
-            if (txtAddHost.Text.IsNullOrWhiteSpace())
+            string str = dataGridView.CurrentRow.Cells["STT"].FormattedValue.ToString();
+            if(str.Any())
             {
-                MessageBox.Show("Please Input Something Before Add.");
-            }
-            else
-            {
-                commandRows.Add("/ip/hotspot/walled-garden/add");
-                commandRows.Add("=dst-host=" + txtAddHost.Text);
+                commandRows.Add("/ip/hotspot/walled-garden/remove");
+                commandRows.Add("=numbers=" + str);
                 ExecuteCommand(commandRows);
             }
-            commandRows.Add("/ip/hotspot/walled-garden/print");
-            getWalledGarden(commandRows);
+            commandRows.Add("/ip/hotspot/walled-garden/print");;
+            displayListWalledGarden(getWalledGarden(commandRows));
         }
         //
-        // Get Walled Garden 
+        // Get Walled Garden From The Router
         //
         private List<walledGardenItem> getWalledGarden(List<string> command)
         {
@@ -134,44 +130,40 @@ namespace tik4net.controller
             return walledGarden;
         }
         //
-        // On load get Walled Garden to Display
+        // Display All The Walled Garden Into DataGrip
         //
-        private void WalledGardenForm_Load(object sender, EventArgs e)
+        private void displayListWalledGarden(List<walledGardenItem> item)
         {
             int STT = 0;
-            
-            txtAddHost.Text = "Enter Your Destination Host Here ...";
-            commandRows.Add("/ip/hotspot/walled-garden/print");
-            if (commandRows.Any())
+            List<walledGardenItem> walledGardenLists = item;
+            foreach (var wl in walledGardenLists)
             {
-                List<walledGardenItem> walledGardenLists = getWalledGarden(commandRows);
-                foreach (var wl in walledGardenLists)
+                object[] Rows = new object[]
                 {
-                    object[] Rows = new object[]
-                    {
                         STT.ToString(),
                         wl.Action,
                         wl.dstHost,
                         wl.hits
-                    };
-                    dataGridView.Rows.Add(Rows);
-                    STT++;
-                }
+                };
+                dataGridView.Rows.Add(Rows);
+                STT++;
             }
         }
-
-        private void WalledGardenForm_KeyDown(object sender, KeyEventArgs e)
+        //
+        // On load get Walled Garden to Display
+        //
+        private void WalledGardenForm_Load(object sender, EventArgs e)
         {
-            switch (e.KeyCode)
+            txtAddHost.Text = "Enter Your Destination Host Here ...";
+            commandRows.Add("/ip/hotspot/walled-garden/print");
+            if (commandRows.Any())
             {
-                case Keys.Escape:
-                    {
-                        Close();
-                        break;
-                    }
+                displayListWalledGarden(getWalledGarden(commandRows));
             }
         }
-
+        //
+        // Add Placeholder for txtAddHost
+        //
         private void txtAddHost_Enter(object sender, EventArgs e)
         {
             if (txtAddHost.Text.Equals("Enter Your Destination Host Here ..."))
@@ -179,7 +171,9 @@ namespace tik4net.controller
                 txtAddHost.Text = "";
             }
         }
-
+        //
+        // Remove Placeholder for txtAddHost
+        //
         private void txtAddHost_Leave(object sender, EventArgs e)
         {
             if (txtAddHost.Text.Equals(""))
@@ -189,9 +183,5 @@ namespace tik4net.controller
             }
         }
 
-        private void dataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

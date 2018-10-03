@@ -37,9 +37,9 @@
             this.clDstHost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clHits = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnOk = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnOk = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -102,7 +102,6 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(366, 370);
             this.dataGridView.TabIndex = 2;
-            this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
             // 
             // STT
             // 
@@ -149,6 +148,17 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(130, 86);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
+            // btnOk
+            // 
+            this.btnOk.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnOk.Location = new System.Drawing.Point(3, 59);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(124, 24);
+            this.btnOk.TabIndex = 5;
+            this.btnOk.Text = "Ok";
+            this.btnOk.UseVisualStyleBackColor = true;
+            // 
             // btnRemove
             // 
             this.btnRemove.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -173,17 +183,6 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnOk
-            // 
-            this.btnOk.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOk.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOk.Location = new System.Drawing.Point(3, 59);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(124, 24);
-            this.btnOk.TabIndex = 5;
-            this.btnOk.Text = "Ok";
-            this.btnOk.UseVisualStyleBackColor = true;
-            // 
             // WalledGardenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -195,7 +194,6 @@
             this.Name = "WalledGardenForm";
             this.Text = "WalledGardenForm";
             this.Load += new System.EventHandler(this.WalledGardenForm_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WalledGardenForm_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
