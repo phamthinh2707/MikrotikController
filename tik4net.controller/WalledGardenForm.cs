@@ -17,7 +17,7 @@ namespace tik4net.controller
         private ITikConnection connection;
         public delegate void getConnection(ITikConnection conn);
         public getConnection getter;
-        
+
         public WalledGardenForm()
         {
             InitializeComponent();
@@ -37,6 +37,54 @@ namespace tik4net.controller
             public string hits { get; set; }
         }
         //
+        // On load get Walled Garden to Display
+        //
+        private void WalledGardenForm_Load(object sender, EventArgs e)
+        {
+            txtAddHost.Text = "Enter Your Destination Host Here ...";
+            commandRows.Add("/ip/hotspot/walled-garden/print");
+            if (commandRows.Any())
+            {
+                displayListWalledGarden(getWalledGarden(commandRows));
+            }
+        }
+        //
+        // Add Dst_Host
+        //
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (txtAddHost.Text.IsNullOrWhiteSpace())
+            {
+                MessageBox.Show("Please Input Something Before Add.");
+            }
+            else
+            {
+                commandRows.Add("/ip/hotspot/walled-garden/add");
+                commandRows.Add("=dst-host=" + txtAddHost.Text);
+                ExecuteCommand(commandRows);
+                txtAddHost.Text = "";
+            }
+            dataGridView.Rows.Clear();
+            commandRows.Add("/ip/hotspot/walled-garden/print");
+            displayListWalledGarden(getWalledGarden(commandRows));
+        }
+        //
+        // Remove Dst_Host
+        //
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            string str = dataGridView.CurrentRow.Cells["STT"].FormattedValue.ToString();
+            if (str.Any())
+            {
+                commandRows.Add("/ip/hotspot/walled-garden/remove");
+                commandRows.Add("=numbers=" + str);
+                ExecuteCommand(commandRows);
+            }
+            dataGridView.Rows.Clear();
+            commandRows.Add("/ip/hotspot/walled-garden/print"); ;
+            displayListWalledGarden(getWalledGarden(commandRows));
+        }
+        //
         // Execute Command
         //
         private List<string> ExecuteCommand(List<string> command)
@@ -53,39 +101,6 @@ namespace tik4net.controller
                 commandRows.Clear();
             }
             return walledGarden;
-        }
-        //
-        // Add Dst_Host
-        //
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            if (txtAddHost.Text.IsNullOrWhiteSpace())
-            {
-                MessageBox.Show("Please Input Something Before Add.");
-            }
-            else
-            {
-                commandRows.Add("/ip/hotspot/walled-garden/add");
-                commandRows.Add("=dst-host=" + txtAddHost.Text);
-                ExecuteCommand(commandRows);
-            }
-            commandRows.Add("/ip/hotspot/walled-garden/print");
-            displayListWalledGarden(getWalledGarden(commandRows));
-        }
-        //
-        // Remove Dst_Host
-        //
-        private void btnRemove_Click(object sender, EventArgs e)
-        {
-            string str = dataGridView.CurrentRow.Cells["STT"].FormattedValue.ToString();
-            if(str.Any())
-            {
-                commandRows.Add("/ip/hotspot/walled-garden/remove");
-                commandRows.Add("=numbers=" + str);
-                ExecuteCommand(commandRows);
-            }
-            commandRows.Add("/ip/hotspot/walled-garden/print");;
-            displayListWalledGarden(getWalledGarden(commandRows));
         }
         //
         // Get Walled Garden From The Router
@@ -147,18 +162,6 @@ namespace tik4net.controller
                 };
                 dataGridView.Rows.Add(Rows);
                 STT++;
-            }
-        }
-        //
-        // On load get Walled Garden to Display
-        //
-        private void WalledGardenForm_Load(object sender, EventArgs e)
-        {
-            txtAddHost.Text = "Enter Your Destination Host Here ...";
-            commandRows.Add("/ip/hotspot/walled-garden/print");
-            if (commandRows.Any())
-            {
-                displayListWalledGarden(getWalledGarden(commandRows));
             }
         }
         //

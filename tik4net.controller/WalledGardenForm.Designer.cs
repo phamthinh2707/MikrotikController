@@ -32,14 +32,14 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtAddHost = new System.Windows.Forms.TextBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clDstHost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clHits = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clDstHost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clHits = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -103,33 +103,6 @@
             this.dataGridView.Size = new System.Drawing.Size(366, 370);
             this.dataGridView.TabIndex = 2;
             // 
-            // STT
-            // 
-            this.STT.HeaderText = "STT";
-            this.STT.Name = "STT";
-            this.STT.Width = 50;
-            // 
-            // clAction
-            // 
-            this.clAction.HeaderText = "Action";
-            this.clAction.Name = "clAction";
-            this.clAction.ReadOnly = true;
-            this.clAction.Width = 50;
-            // 
-            // clDstHost
-            // 
-            this.clDstHost.HeaderText = "Dst.Host";
-            this.clDstHost.Name = "clDstHost";
-            this.clDstHost.ReadOnly = true;
-            this.clDstHost.Width = 150;
-            // 
-            // clHits
-            // 
-            this.clHits.HeaderText = "Hits";
-            this.clHits.Name = "clHits";
-            this.clHits.ReadOnly = true;
-            this.clHits.Width = 50;
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
@@ -183,6 +156,33 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // STT
+            // 
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            this.STT.Width = 50;
+            // 
+            // clAction
+            // 
+            this.clAction.HeaderText = "Action";
+            this.clAction.Name = "clAction";
+            this.clAction.ReadOnly = true;
+            this.clAction.Width = 50;
+            // 
+            // clDstHost
+            // 
+            this.clDstHost.HeaderText = "Dst.Host";
+            this.clDstHost.Name = "clDstHost";
+            this.clDstHost.ReadOnly = true;
+            this.clDstHost.Width = 160;
+            // 
+            // clHits
+            // 
+            this.clHits.HeaderText = "Hits";
+            this.clHits.Name = "clHits";
+            this.clHits.ReadOnly = true;
+            this.clHits.Width = 50;
+            // 
             // WalledGardenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,10 +212,10 @@
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.DataGridViewTextBoxColumn STT;
         private System.Windows.Forms.DataGridViewTextBoxColumn clAction;
         private System.Windows.Forms.DataGridViewTextBoxColumn clDstHost;
         private System.Windows.Forms.DataGridViewTextBoxColumn clHits;
-        private System.Windows.Forms.Button btnOk;
     }
 }
