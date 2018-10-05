@@ -52,6 +52,7 @@
             this.btnSubmit = new System.Windows.Forms.Button();
             this.rtxDisplay = new System.Windows.Forms.RichTextBox();
             this.txtCommand = new System.Windows.Forms.TextBox();
+            this.btnUserManagement = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableOption.SuspendLayout();
@@ -203,6 +204,7 @@
             this.tableOption.Controls.Add(this.btnNatPort, 0, 2);
             this.tableOption.Controls.Add(this.btnEncryptPassword, 1, 2);
             this.tableOption.Controls.Add(this.btnGetMAC, 0, 3);
+            this.tableOption.Controls.Add(this.btnUserManagement, 1, 3);
             this.tableOption.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableOption.Location = new System.Drawing.Point(3, 139);
             this.tableOption.Name = "tableOption";
@@ -357,6 +359,17 @@
             this.txtCommand.TabIndex = 1;
             this.txtCommand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCommand_KeyPress);
             // 
+            // btnUserManagement
+            // 
+            this.btnUserManagement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUserManagement.Location = new System.Drawing.Point(110, 87);
+            this.btnUserManagement.Name = "btnUserManagement";
+            this.btnUserManagement.Size = new System.Drawing.Size(101, 22);
+            this.btnUserManagement.TabIndex = 7;
+            this.btnUserManagement.Text = "User Manage";
+            this.btnUserManagement.UseVisualStyleBackColor = true;
+            this.btnUserManagement.Click += new System.EventHandler(this.btnUserManagement_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -402,6 +415,7 @@
         private System.Windows.Forms.Button btnNatPort;
         private System.Windows.Forms.Button btnEncryptPassword;
         private System.Windows.Forms.Button btnGetMAC;
+        private System.Windows.Forms.Button btnUserManagement;
     }
 }
 

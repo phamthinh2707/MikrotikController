@@ -13,6 +13,7 @@ using tik4net;
 using Newtonsoft.Json;
 using System.IO;
 using System.Net.NetworkInformation;
+using System.Security.Cryptography;
 
 namespace tik4net.controller
 {
@@ -95,21 +96,27 @@ namespace tik4net.controller
                 string host = txtHost.Text;
                 string user = txtUser.Text;
                 string password = txtPassword.Text;
-                try
+                if (!host.IsNullOrWhiteSpace() && !user.IsNullOrWhiteSpace())
                 {
-                    connection.OnReadRow += Connection_OnReadRow;
-                    connection.OnWriteRow += Connection_OnWriteRow;
-                    connection.Open(host, user, password);
-                    lblStatus.Text = "Connected";
-                    lblStatus.ForeColor = System.Drawing.Color.Green;
-                    tableOption.Visible = true;
-                    btnSubmit.Enabled = true;
-                    txtCommand.ReadOnly = false;
-                    btnConnect.Text = "Disconnect";
-                }
-                catch (Exception ex)
+                    try
+                    {
+                        connection.OnReadRow += Connection_OnReadRow;
+                        connection.OnWriteRow += Connection_OnWriteRow;
+                        connection.Open(host, user, password);
+                        lblStatus.Text = "Connected";
+                        lblStatus.ForeColor = System.Drawing.Color.Green;
+                        tableOption.Visible = true;
+                        btnSubmit.Enabled = true;
+                        txtCommand.ReadOnly = false;
+                        btnConnect.Text = "Disconnect";
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                } else
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Please Enter Your Host and Password.");
                 }
             }
             else if (action == "Disconnect")
@@ -118,13 +125,14 @@ namespace tik4net.controller
                 btnConnect.Text = "Connect";
                 lblStatus.Text = "Disconnect";
                 lblStatus.ForeColor = Color.Crimson;
+                rtxDisplay.Text = "";
                 tableOption.Visible = false;
                 btnSubmit.Enabled = false;
                 txtCommand.ReadOnly = true;
             }
         }
         //
-        //
+        // 
         //
         private void Connection_OnWriteRow(object sender, TikConnectionCommCallbackEventArgs args)
         {
@@ -225,7 +233,9 @@ namespace tik4net.controller
                 }
             }
         }
-
+        //
+        // Get Router MAC
+        //
         private void btnGetMAC_Click(object sender, EventArgs e)
         {
             NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
@@ -239,6 +249,13 @@ namespace tik4net.controller
                 }
             }
             txtHost.Text = MACAddress;
+        }
+
+        private void btnUserManagement_Click(object sender, EventArgs e)
+        {
+            UserMangementForm umf = new UserMangementForm();
+            umf.getter(connection);
+            umf.ShowDialog();
         }
     }
 }

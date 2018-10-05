@@ -83,6 +83,7 @@ namespace tik4net.controller
             dataGridView.Rows.Clear();
             commandRows.Add("/ip/hotspot/walled-garden/print"); ;
             displayListWalledGarden(getWalledGarden(commandRows));
+            commandRows.Clear();
         }
         //
         // Execute Command
