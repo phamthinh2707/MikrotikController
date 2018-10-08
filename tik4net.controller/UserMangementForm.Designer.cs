@@ -32,15 +32,12 @@
             this.tabUsers = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.UserGridView = new System.Windows.Forms.DataGridView();
-            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnEditUser = new System.Windows.Forms.Button();
             this.btnRemoveUser = new System.Windows.Forms.Button();
+            this.btnAddUser = new System.Windows.Forms.Button();
             this.btnDisabledUser = new System.Windows.Forms.Button();
             this.btnEnabledUser = new System.Windows.Forms.Button();
-            this.btnAddUser = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.AmountOfUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabGroup = new System.Windows.Forms.TabPage();
@@ -48,6 +45,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnRemoveGroup = new System.Windows.Forms.Button();
             this.btnAddGroup = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.GroupGridView = new System.Windows.Forms.DataGridView();
             this.nameGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.policiesGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,6 +63,11 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.statusStrip3 = new System.Windows.Forms.StatusStrip();
             this.AmountOfActiveUser = new System.Windows.Forms.ToolStripStatusLabel();
+            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userLastLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabUser.SuspendLayout();
             this.tabUsers.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -124,12 +127,17 @@
             // 
             // UserGridView
             // 
+            this.UserGridView.AllowUserToAddRows = false;
+            this.UserGridView.AllowUserToDeleteRows = false;
+            this.UserGridView.AllowUserToResizeColumns = false;
+            this.UserGridView.AllowUserToResizeRows = false;
             this.UserGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UserGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.username,
             this.userGroup,
             this.userAddress,
-            this.userLastLogin});
+            this.userLastLogin,
+            this.Status});
             this.UserGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UserGridView.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.UserGridView.Location = new System.Drawing.Point(3, 42);
@@ -137,42 +145,20 @@
             this.UserGridView.Size = new System.Drawing.Size(743, 351);
             this.UserGridView.TabIndex = 0;
             // 
-            // username
-            // 
-            this.username.HeaderText = "Name";
-            this.username.Name = "username";
-            this.username.Width = 175;
-            // 
-            // userGroup
-            // 
-            this.userGroup.HeaderText = "Group";
-            this.userGroup.Name = "userGroup";
-            this.userGroup.Width = 175;
-            // 
-            // userAddress
-            // 
-            this.userAddress.HeaderText = "Address";
-            this.userAddress.Name = "userAddress";
-            this.userAddress.Width = 175;
-            // 
-            // userLastLogin
-            // 
-            this.userLastLogin.HeaderText = "Last-Logged-In";
-            this.userLastLogin.Name = "userLastLogin";
-            this.userLastLogin.Width = 175;
-            // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 5;
+            this.tableLayoutPanel4.ColumnCount = 6;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.btnEditUser, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnRemoveUser, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnAddUser, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnDisabledUser, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnEnabledUser, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.btnAddUser, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -181,21 +167,41 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(743, 33);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
+            // btnEditUser
+            // 
+            this.btnEditUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEditUser.Location = new System.Drawing.Point(151, 3);
+            this.btnEditUser.Name = "btnEditUser";
+            this.btnEditUser.Size = new System.Drawing.Size(68, 27);
+            this.btnEditUser.TabIndex = 11;
+            this.btnEditUser.Text = "Edit";
+            this.btnEditUser.UseVisualStyleBackColor = true;
+            // 
             // btnRemoveUser
             // 
             this.btnRemoveUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRemoveUser.Location = new System.Drawing.Point(77, 3);
             this.btnRemoveUser.Name = "btnRemoveUser";
             this.btnRemoveUser.Size = new System.Drawing.Size(68, 27);
-            this.btnRemoveUser.TabIndex = 3;
+            this.btnRemoveUser.TabIndex = 9;
             this.btnRemoveUser.Text = "Remove";
             this.btnRemoveUser.UseVisualStyleBackColor = true;
-            this.btnRemoveUser.Click += new System.EventHandler(this.btnRemoveUser_Click);
+            // 
+            // btnAddUser
+            // 
+            this.btnAddUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAddUser.Location = new System.Drawing.Point(3, 3);
+            this.btnAddUser.Name = "btnAddUser";
+            this.btnAddUser.Size = new System.Drawing.Size(68, 27);
+            this.btnAddUser.TabIndex = 8;
+            this.btnAddUser.Text = "Add";
+            this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // btnDisabledUser
             // 
             this.btnDisabledUser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDisabledUser.Location = new System.Drawing.Point(225, 3);
+            this.btnDisabledUser.Location = new System.Drawing.Point(299, 3);
             this.btnDisabledUser.Name = "btnDisabledUser";
             this.btnDisabledUser.Size = new System.Drawing.Size(68, 27);
             this.btnDisabledUser.TabIndex = 2;
@@ -206,23 +212,13 @@
             // btnEnabledUser
             // 
             this.btnEnabledUser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEnabledUser.Location = new System.Drawing.Point(151, 3);
+            this.btnEnabledUser.Location = new System.Drawing.Point(225, 3);
             this.btnEnabledUser.Name = "btnEnabledUser";
             this.btnEnabledUser.Size = new System.Drawing.Size(68, 27);
             this.btnEnabledUser.TabIndex = 1;
             this.btnEnabledUser.Text = "Enabled";
             this.btnEnabledUser.UseVisualStyleBackColor = true;
             this.btnEnabledUser.Click += new System.EventHandler(this.btnEnabledUser_Click);
-            // 
-            // btnAddUser
-            // 
-            this.btnAddUser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAddUser.Location = new System.Drawing.Point(3, 3);
-            this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(68, 27);
-            this.btnAddUser.TabIndex = 0;
-            this.btnAddUser.Text = "Add";
-            this.btnAddUser.UseVisualStyleBackColor = true;
             // 
             // statusStrip1
             // 
@@ -269,12 +265,14 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel2.Controls.Add(this.btnRemoveGroup, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnAddGroup, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnRefresh, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -292,6 +290,7 @@
             this.btnRemoveGroup.TabIndex = 1;
             this.btnRemoveGroup.Text = "Remove";
             this.btnRemoveGroup.UseVisualStyleBackColor = true;
+            this.btnRemoveGroup.Click += new System.EventHandler(this.btnRemoveGroup_Click);
             // 
             // btnAddGroup
             // 
@@ -302,9 +301,25 @@
             this.btnAddGroup.TabIndex = 0;
             this.btnAddGroup.Text = "Add";
             this.btnAddGroup.UseVisualStyleBackColor = true;
+            this.btnAddGroup.Click += new System.EventHandler(this.btnAddGroup_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRefresh.Location = new System.Drawing.Point(151, 3);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(68, 27);
+            this.btnRefresh.TabIndex = 2;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // GroupGridView
             // 
+            this.GroupGridView.AllowUserToAddRows = false;
+            this.GroupGridView.AllowUserToDeleteRows = false;
+            this.GroupGridView.AllowUserToResizeColumns = false;
+            this.GroupGridView.AllowUserToResizeRows = false;
             this.GroupGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GroupGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameGroup,
@@ -378,6 +393,10 @@
             // 
             // ActiveUserGridView
             // 
+            this.ActiveUserGridView.AllowUserToAddRows = false;
+            this.ActiveUserGridView.AllowUserToDeleteRows = false;
+            this.ActiveUserGridView.AllowUserToResizeColumns = false;
+            this.ActiveUserGridView.AllowUserToResizeRows = false;
             this.ActiveUserGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ActiveUserGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ActiveUserName,
@@ -453,6 +472,35 @@
             this.AmountOfActiveUser.Size = new System.Drawing.Size(66, 17);
             this.AmountOfActiveUser.Text = "Active User";
             // 
+            // username
+            // 
+            this.username.HeaderText = "Name";
+            this.username.Name = "username";
+            this.username.Width = 150;
+            // 
+            // userGroup
+            // 
+            this.userGroup.HeaderText = "Group";
+            this.userGroup.Name = "userGroup";
+            // 
+            // userAddress
+            // 
+            this.userAddress.HeaderText = "Address";
+            this.userAddress.Name = "userAddress";
+            this.userAddress.Width = 150;
+            // 
+            // userLastLogin
+            // 
+            this.userLastLogin.HeaderText = "Last-Logged-In";
+            this.userLastLogin.Name = "userLastLogin";
+            this.userLastLogin.Width = 150;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.Width = 150;
+            // 
             // UserMangementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -499,10 +547,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.DataGridView UserGridView;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Button btnRemoveUser;
         private System.Windows.Forms.Button btnDisabledUser;
         private System.Windows.Forms.Button btnEnabledUser;
-        private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.TabPage tabGroup;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -522,13 +568,18 @@
         public System.Windows.Forms.ToolStripStatusLabel AmountOfUser;
         private System.Windows.Forms.ToolStripStatusLabel AmountOfGroup;
         private System.Windows.Forms.ToolStripStatusLabel AmountOfActiveUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn username;
-        private System.Windows.Forms.DataGridViewTextBoxColumn userGroup;
-        private System.Windows.Forms.DataGridViewTextBoxColumn userAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn userLastLogin;
         private System.Windows.Forms.DataGridViewTextBoxColumn ActiveUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn TimeLoggedIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ActiveAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn VIA;
+        private System.Windows.Forms.Button btnEditUser;
+        private System.Windows.Forms.Button btnRemoveUser;
+        private System.Windows.Forms.Button btnAddUser;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn username;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userGroup;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userAddress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userLastLogin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
     }
 }

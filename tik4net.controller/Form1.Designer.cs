@@ -46,13 +46,13 @@
             this.btnWallGarden = new System.Windows.Forms.Button();
             this.btnNatPort = new System.Windows.Forms.Button();
             this.btnEncryptPassword = new System.Windows.Forms.Button();
-            this.btnGetMAC = new System.Windows.Forms.Button();
+            this.btnUserManagement = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.rtxDisplay = new System.Windows.Forms.RichTextBox();
             this.txtCommand = new System.Windows.Forms.TextBox();
-            this.btnUserManagement = new System.Windows.Forms.Button();
+            this.btnBasicSetting = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableOption.SuspendLayout();
@@ -203,8 +203,8 @@
             this.tableOption.Controls.Add(this.btnWallGarden, 1, 1);
             this.tableOption.Controls.Add(this.btnNatPort, 0, 2);
             this.tableOption.Controls.Add(this.btnEncryptPassword, 1, 2);
-            this.tableOption.Controls.Add(this.btnGetMAC, 0, 3);
             this.tableOption.Controls.Add(this.btnUserManagement, 1, 3);
+            this.tableOption.Controls.Add(this.btnBasicSetting, 0, 3);
             this.tableOption.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableOption.Location = new System.Drawing.Point(3, 139);
             this.tableOption.Name = "tableOption";
@@ -287,16 +287,16 @@
             this.btnEncryptPassword.Text = "Encrypt Password";
             this.btnEncryptPassword.UseVisualStyleBackColor = true;
             // 
-            // btnGetMAC
+            // btnUserManagement
             // 
-            this.btnGetMAC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnGetMAC.Location = new System.Drawing.Point(3, 87);
-            this.btnGetMAC.Name = "btnGetMAC";
-            this.btnGetMAC.Size = new System.Drawing.Size(101, 22);
-            this.btnGetMAC.TabIndex = 6;
-            this.btnGetMAC.Text = "Get MAC";
-            this.btnGetMAC.UseVisualStyleBackColor = true;
-            this.btnGetMAC.Click += new System.EventHandler(this.btnGetMAC_Click);
+            this.btnUserManagement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUserManagement.Location = new System.Drawing.Point(110, 87);
+            this.btnUserManagement.Name = "btnUserManagement";
+            this.btnUserManagement.Size = new System.Drawing.Size(101, 22);
+            this.btnUserManagement.TabIndex = 7;
+            this.btnUserManagement.Text = "User Manage";
+            this.btnUserManagement.UseVisualStyleBackColor = true;
+            this.btnUserManagement.Click += new System.EventHandler(this.btnUserManagement_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -359,16 +359,15 @@
             this.txtCommand.TabIndex = 1;
             this.txtCommand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCommand_KeyPress);
             // 
-            // btnUserManagement
+            // btnBasicSetting
             // 
-            this.btnUserManagement.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnUserManagement.Location = new System.Drawing.Point(110, 87);
-            this.btnUserManagement.Name = "btnUserManagement";
-            this.btnUserManagement.Size = new System.Drawing.Size(101, 22);
-            this.btnUserManagement.TabIndex = 7;
-            this.btnUserManagement.Text = "User Manage";
-            this.btnUserManagement.UseVisualStyleBackColor = true;
-            this.btnUserManagement.Click += new System.EventHandler(this.btnUserManagement_Click);
+            this.btnBasicSetting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnBasicSetting.Location = new System.Drawing.Point(3, 87);
+            this.btnBasicSetting.Name = "btnBasicSetting";
+            this.btnBasicSetting.Size = new System.Drawing.Size(101, 22);
+            this.btnBasicSetting.TabIndex = 8;
+            this.btnBasicSetting.Text = "BasicSetting";
+            this.btnBasicSetting.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -377,7 +376,7 @@
             this.ClientSize = new System.Drawing.Size(951, 489);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Mikrotik Controller";
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -414,8 +413,8 @@
         private System.Windows.Forms.Button btnWallGarden;
         private System.Windows.Forms.Button btnNatPort;
         private System.Windows.Forms.Button btnEncryptPassword;
-        private System.Windows.Forms.Button btnGetMAC;
         private System.Windows.Forms.Button btnUserManagement;
+        private System.Windows.Forms.Button btnBasicSetting;
     }
 }
 
