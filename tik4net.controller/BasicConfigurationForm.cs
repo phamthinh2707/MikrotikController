@@ -20,10 +20,10 @@ namespace tik4net.controller
         private ITikConnection connection;
         public delegate void getConnection(ITikConnection conn);
         public getConnection getter;
-        String username = null;
-        String password = null;
-        String wpaKey = null;
-        String wpa2Key = null;
+        string username = null;
+        string password = null;
+        string wpaKey = null;
+        string wpa2Key = null;
 
         public BasicConfigurationForm()
         {
@@ -106,7 +106,7 @@ namespace tik4net.controller
         private void btnFinish_Click(object sender, EventArgs e)
         {
             this.page3.Visible = false;
-            using (StreamReader stream = new StreamReader("G:/Study's data/OJT/Script Basic API.json"))
+            using (StreamReader stream = new StreamReader("D:/GitHub/MikrotikController/Json File/Script Basic API.json"))
             {
                 var str = stream.ReadToEnd();
                 var scripts = JsonConvert.DeserializeObject<List<Script>>(str);

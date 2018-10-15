@@ -270,11 +270,6 @@ namespace tik4net.controller
             umf.ShowDialog();
         }
 
-        private void btnBasicSetting_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnBasicConfig_Click(object sender, EventArgs e)
         {
             BasicConfigurationForm basicConfig = new BasicConfigurationForm();

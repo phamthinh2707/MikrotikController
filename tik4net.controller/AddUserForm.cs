@@ -94,23 +94,40 @@ namespace tik4net.controller
         //
         private void btnOk_Click(object sender, EventArgs e)
         {
+            bool check = checkUsername();
             bool flag = true;
             if (txtUsername.Text.IsNullOrWhiteSpace())
             {
                 MessageBox.Show("Username is required.");
-            } else if(cbGroup.SelectedItem.ToString().IsNullOrWhiteSpace())
+                flag = false;
+            }
+            else if (cbGroup.SelectedItem.ToString().IsNullOrWhiteSpace())
             {
                 MessageBox.Show("Group is required.");
-            } else if(txtPassword.Text.IsNullOrWhiteSpace())
+                flag = false;
+            }
+            else if (txtPassword.Text.IsNullOrWhiteSpace())
             {
                 MessageBox.Show("Password is invalid.");
+                flag = false;
             }
-            bool check = checkUsername();
-            if(check == false)
+            else if (!txtPassword.Text.Equals(txtConfirmPassword.Text))
             {
-                MessageBox.Show("Username is already existed!");
+                MessageBox.Show("Password does not match.");
+                flag = false;
             }
-
+            else if (check == false)
+            {
+                MessageBox.Show("Username is already existed.");
+            }
+            else if( check == true && flag == true)
+            {
+                commandRows.Add("/user/add");
+                commandRows.Add("=name=" + txtUsername.Text);
+                commandRows.Add("=group=" + cbGroup.SelectedItem.ToString());
+                commandRows.Add("=password=" + txtPassword.Text);
+                ExecuteParameterCommand(commandRows);
+            }
         }
         //
         // Form on Load
@@ -120,9 +137,13 @@ namespace tik4net.controller
             txtUsername.Text = "User";
             commandRows.Add("/user/group/print");
             List<string> name = getGroup(commandRows);
-            foreach (var n in name)
+            if (name.Any())
             {
-                cbGroup.Items.Add(n);
+                foreach (var n in name)
+                {
+                    cbGroup.Items.Add(n);
+                }
+                cbGroup.SelectedIndex = 0;
             }
         }
         //-------------------------------------------Function--------------------------------------//
@@ -159,6 +180,11 @@ namespace tik4net.controller
                 var result = connection.CallCommandSync(rows.ToArray());
                 commandRows.Clear();
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

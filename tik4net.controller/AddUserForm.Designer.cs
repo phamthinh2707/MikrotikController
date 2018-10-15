@@ -128,11 +128,14 @@
             this.btnCancel.TabIndex = 10;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(110, 138);
+            this.txtPassword.MaxLength = 20;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(201, 20);
             this.txtPassword.TabIndex = 12;
             // 
@@ -149,6 +152,7 @@
             // 
             this.txtConfirmPassword.Location = new System.Drawing.Point(110, 164);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.PasswordChar = '*';
             this.txtConfirmPassword.Size = new System.Drawing.Size(201, 20);
             this.txtConfirmPassword.TabIndex = 14;
             // 

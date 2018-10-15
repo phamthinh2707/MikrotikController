@@ -107,7 +107,7 @@ namespace tik4net.controller
             this.txtHost.Name = "txtHost";
             this.txtHost.Size = new System.Drawing.Size(214, 20);
             this.txtHost.TabIndex = 5;
-            this.txtHost.Text = "192.168.253.2";
+            this.txtHost.Text = "192.168.120.1";
             // 
             // lblUser
             // 
@@ -336,7 +336,6 @@ namespace tik4net.controller
             this.btnBasicSetting.TabIndex = 8;
             this.btnBasicSetting.Text = "Basic Setting";
             this.btnBasicSetting.UseVisualStyleBackColor = true;
-            this.btnBasicSetting.Click += new System.EventHandler(this.btnBasicSetting_Click);
             // 
             // tableLayoutPanel1
             // 
