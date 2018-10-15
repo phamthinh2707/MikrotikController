@@ -88,7 +88,11 @@ namespace tik4net
         /// <param name="password">The password.</param>
         /// <seealso cref="Close"/>
         void Open(string host, int port, string user, string password);
-
+        /// <summary>
+        /// <param name="MAC">The MAC.</param>
+        /// <param name="user">The user.</param>
+        /// <param name="password">The password.</param>
+        /// </summary>
 #if !(NET20 || NET35 || NET40)
         /// <summary>
         /// Opens connection to the specified mikrotik host on default port (depends on technology) and perform the logon operation.

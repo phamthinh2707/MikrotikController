@@ -47,12 +47,12 @@
             this.btnNatPort = new System.Windows.Forms.Button();
             this.btnEncryptPassword = new System.Windows.Forms.Button();
             this.btnUserManagement = new System.Windows.Forms.Button();
+            this.btnBasicSetting = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.rtxDisplay = new System.Windows.Forms.RichTextBox();
             this.txtCommand = new System.Windows.Forms.TextBox();
-            this.btnBasicSetting = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableOption.SuspendLayout();
@@ -298,6 +298,17 @@
             this.btnUserManagement.UseVisualStyleBackColor = true;
             this.btnUserManagement.Click += new System.EventHandler(this.btnUserManagement_Click);
             // 
+            // btnBasicSetting
+            // 
+            this.btnBasicSetting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnBasicSetting.Location = new System.Drawing.Point(3, 87);
+            this.btnBasicSetting.Name = "btnBasicSetting";
+            this.btnBasicSetting.Size = new System.Drawing.Size(101, 22);
+            this.btnBasicSetting.TabIndex = 8;
+            this.btnBasicSetting.Text = "Basic Setting";
+            this.btnBasicSetting.UseVisualStyleBackColor = true;
+            this.btnBasicSetting.Click += new System.EventHandler(this.btnBasicSetting_Click);
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
@@ -358,16 +369,6 @@
             this.txtCommand.Size = new System.Drawing.Size(719, 20);
             this.txtCommand.TabIndex = 1;
             this.txtCommand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCommand_KeyPress);
-            // 
-            // btnBasicSetting
-            // 
-            this.btnBasicSetting.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnBasicSetting.Location = new System.Drawing.Point(3, 87);
-            this.btnBasicSetting.Name = "btnBasicSetting";
-            this.btnBasicSetting.Size = new System.Drawing.Size(101, 22);
-            this.btnBasicSetting.TabIndex = 8;
-            this.btnBasicSetting.Text = "BasicSetting";
-            this.btnBasicSetting.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

@@ -126,6 +126,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\tik4net.objects\tik4net.objects.csproj">
+      <Project>{DD32E354-19C0-4992-902B-9CDD8E53E879}</Project>
+      <Name>tik4net.objects</Name>
+    </ProjectReference>
     <ProjectReference Include="..\tik4net\tik4net.csproj">
       <Project>{15288f76-5a85-418e-87b2-b22265726601}</Project>
       <Name>tik4net</Name>

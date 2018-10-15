@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.lblUsername = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             this.lblUserGroup = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtAllowedAddress = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtLastLogged = new System.Windows.Forms.TextBox();
             this.lblLoginTime = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbGroup = new System.Windows.Forms.ComboBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.lblConfirmPassword = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -54,12 +54,12 @@
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "Name:";
             // 
-            // textBox1
+            // txtUsername
             // 
-            this.textBox1.Location = new System.Drawing.Point(110, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(201, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtUsername.Location = new System.Drawing.Point(110, 12);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(201, 20);
+            this.txtUsername.TabIndex = 1;
             // 
             // lblUserGroup
             // 
@@ -70,12 +70,12 @@
             this.lblUserGroup.TabIndex = 2;
             this.lblUserGroup.Text = "Group:";
             // 
-            // textBox3
+            // txtAllowedAddress
             // 
-            this.textBox3.Location = new System.Drawing.Point(110, 64);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(201, 20);
-            this.textBox3.TabIndex = 5;
+            this.txtAllowedAddress.Location = new System.Drawing.Point(110, 64);
+            this.txtAllowedAddress.Name = "txtAllowedAddress";
+            this.txtAllowedAddress.Size = new System.Drawing.Size(201, 20);
+            this.txtAllowedAddress.TabIndex = 5;
             // 
             // lblAddress
             // 
@@ -86,12 +86,12 @@
             this.lblAddress.TabIndex = 4;
             this.lblAddress.Text = "Allowed Address:";
             // 
-            // textBox4
+            // txtLastLogged
             // 
-            this.textBox4.Location = new System.Drawing.Point(110, 90);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(201, 20);
-            this.textBox4.TabIndex = 7;
+            this.txtLastLogged.Location = new System.Drawing.Point(110, 90);
+            this.txtLastLogged.Name = "txtLastLogged";
+            this.txtLastLogged.Size = new System.Drawing.Size(201, 20);
+            this.txtLastLogged.TabIndex = 7;
             // 
             // lblLoginTime
             // 
@@ -102,13 +102,13 @@
             this.lblLoginTime.TabIndex = 6;
             this.lblLoginTime.Text = "Last Logged In:";
             // 
-            // comboBox1
+            // cbGroup
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(110, 37);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(201, 21);
-            this.comboBox1.TabIndex = 8;
+            this.cbGroup.FormattingEnabled = true;
+            this.cbGroup.Location = new System.Drawing.Point(110, 37);
+            this.cbGroup.Name = "cbGroup";
+            this.cbGroup.Size = new System.Drawing.Size(201, 21);
+            this.cbGroup.TabIndex = 8;
             // 
             // btnOk
             // 
@@ -129,12 +129,12 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // txtPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(110, 138);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(201, 20);
-            this.textBox2.TabIndex = 12;
+            this.txtPassword.Location = new System.Drawing.Point(110, 138);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(201, 20);
+            this.txtPassword.TabIndex = 12;
             // 
             // lblPassword
             // 
@@ -145,12 +145,12 @@
             this.lblPassword.TabIndex = 11;
             this.lblPassword.Text = "Password:";
             // 
-            // textBox5
+            // txtConfirmPassword
             // 
-            this.textBox5.Location = new System.Drawing.Point(110, 164);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(201, 20);
-            this.textBox5.TabIndex = 14;
+            this.txtConfirmPassword.Location = new System.Drawing.Point(110, 164);
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.Size = new System.Drawing.Size(201, 20);
+            this.txtConfirmPassword.TabIndex = 14;
             // 
             // lblConfirmPassword
             // 
@@ -175,22 +175,23 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(416, 198);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtConfirmPassword);
             this.Controls.Add(this.lblConfirmPassword);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.cbGroup);
+            this.Controls.Add(this.txtLastLogged);
             this.Controls.Add(this.lblLoginTime);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtAllowedAddress);
             this.Controls.Add(this.lblAddress);
             this.Controls.Add(this.lblUserGroup);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblUsername);
             this.Name = "AddUserForm";
             this.Text = "Add User";
+            this.Load += new System.EventHandler(this.AddUserForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,18 +200,18 @@
         #endregion
 
         private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label lblUserGroup;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtAllowedAddress;
         private System.Windows.Forms.Label lblAddress;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtLastLogged;
         private System.Windows.Forms.Label lblLoginTime;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbGroup;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.Label lblConfirmPassword;
         private System.Windows.Forms.Label label1;
     }

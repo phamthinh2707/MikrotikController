@@ -12,12 +12,12 @@ namespace tik4net.controller
 {
     public partial class AddUserForm : Form
     {
+        List<string> commandRows = new List<string>();
         private ITikConnection connection;
         public delegate void getConnection(ITikConnection conn);
-        //public delegate void getGroup(List<AddUserForm.Group> g);
         public getConnection getter;
         public AddUserForm()
-        {   
+        {
             InitializeComponent();
             getter = new getConnection(getConn);
         }
@@ -27,16 +27,138 @@ namespace tik4net.controller
             connection = conn;
         }
 
-        private class Group
+        public class Group
         {
             public string name { get; set; }
             public string policies { get; set; }
             public string skin { get; set; }
         }
 
+        private bool checkUsername()
+        {
+            bool check = true;
+            List<string> nameList = getUsername();
+            foreach (string name in nameList)
+            {
+                if (name.Equals(txtUsername.Text))
+                {
+                    check = false;
+                    break;
+                }
+            }
+            return check;
+        }
+
+        private List<string> getUsername()
+        {
+            List<string> nameList = new List<string>();
+            var result = connection.CallCommandSync("/user/print");
+            foreach (var resultItem in result)
+                foreach (var item in resultItem.Words)
+                {
+                    if (item.Key.Equals("name"))
+                        nameList.Add(item.Value);
+                }
+            return nameList;
+        }
+
+        private List<string> getGroup(List<string> command)
+        {
+            List<string> groupName = new List<string>();
+            if (commandRows.Any())
+            {
+                List<string> rows = new List<string>();
+                foreach (string row in commandRows)
+                {
+                    rows.AddRange(row.Split('|').Where(r => !string.IsNullOrEmpty(r)));
+                }
+                var result = connection.CallCommandSync(rows.ToArray());
+                foreach (var resultItem in result)
+                {
+                    string g = "";
+                    foreach (var word in resultItem.Words)
+                    {
+                        if (word.Key.Equals("name"))
+                        {
+                            g = word.Value;
+                        }
+                    }
+                    groupName.Add(g);
+                }
+                commandRows.Clear();
+            }
+            return groupName;
+        }
+        //
+        // Add User
+        //
         private void btnOk_Click(object sender, EventArgs e)
         {
+            bool flag = true;
+            if (txtUsername.Text.IsNullOrWhiteSpace())
+            {
+                MessageBox.Show("Username is required.");
+            } else if(cbGroup.SelectedItem.ToString().IsNullOrWhiteSpace())
+            {
+                MessageBox.Show("Group is required.");
+            } else if(txtPassword.Text.IsNullOrWhiteSpace())
+            {
+                MessageBox.Show("Password is invalid.");
+            }
+            bool check = checkUsername();
+            if(check == false)
+            {
+                MessageBox.Show("Username is already existed!");
+            }
 
+        }
+        //
+        // Form on Load
+        //
+        private void AddUserForm_Load(object sender, EventArgs e)
+        {
+            txtUsername.Text = "User";
+            commandRows.Add("/user/group/print");
+            List<string> name = getGroup(commandRows);
+            foreach (var n in name)
+            {
+                cbGroup.Items.Add(n);
+            }
+        }
+        //-------------------------------------------Function--------------------------------------//
+        //
+        // Execute Command
+        //
+        private void ExecuteCommand(string commandStr)
+        {
+            if (!string.IsNullOrWhiteSpace(commandStr))
+                commandRows.Add(commandStr);
+            if (commandRows.Any())
+            {
+                List<string> rows = new List<string>();
+                foreach (string row in commandRows)
+                {
+                    rows.AddRange(row.Split('|').Where(r => !string.IsNullOrEmpty(r)));
+                }
+                var result = connection.CallCommandSync(rows.ToArray());
+                commandRows.Clear();
+            }
+        }
+        //
+        // Execute Command With Parameter
+        //
+        private void ExecuteParameterCommand(List<string> commandRows)
+        {
+            if (commandRows.Any())
+            {
+                List<string> rows = new List<string>();
+                foreach (string row in commandRows)
+                {
+                    rows.AddRange(row.Split('|').Where(r => !string.IsNullOrEmpty(r)));
+                }
+                var result = connection.CallCommandSync(rows.ToArray());
+                commandRows.Clear();
+            }
         }
     }
 }

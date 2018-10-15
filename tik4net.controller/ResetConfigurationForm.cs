@@ -67,6 +67,7 @@ namespace tik4net.controller
                     var script = JsonConvert.DeserializeObject<List<Script>>(str);
                     ExecuteParameterCommand(script[0].ScriptValue);
                     Close();
+                    
                 }
             }
             //

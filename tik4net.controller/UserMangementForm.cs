@@ -117,7 +117,9 @@ namespace tik4net.controller
         //
         private void btnAddUser_Click(object sender, EventArgs e)
         {
+            commandRows.Add("/user/group/print");
             AddUserForm auf = new AddUserForm();
+            auf.getter(connection);
             auf.ShowDialog();
         }
         //
@@ -174,7 +176,7 @@ namespace tik4net.controller
             }
         }
 
-        //-------------------------------------------Active User--------------------------------------//
+        //-------------------------------------------Active User--------------------------------//
         private class ActiveUser
         {
             public string name { get; set; }
@@ -246,7 +248,7 @@ namespace tik4net.controller
                 AmountOfActiveUser.Text = (amountOfAcitve - 1) + " Active Users.";
         }
         //-------------------------------------------Group--------------------------------------//
-        private class Group
+        public class Group
         {
             public string name { get; set; }
             public string policies { get; set; }
@@ -318,7 +320,9 @@ namespace tik4net.controller
         //
         private void btnAddGroup_Click(object sender, EventArgs e)
         {
-
+            AddUserForm auf = new AddUserForm();
+            auf.getter(connection);
+            auf.ShowDialog();
         }
         //
         // Remove Group
@@ -391,7 +395,9 @@ namespace tik4net.controller
             commandRows.Add("/user/active/print");
             displayActiveUsers(getActiveUsers(commandRows));
         }
-
+        //
+        // Edit User
+        //
         private void btnEditUser_Click(object sender, EventArgs e)
         {
 

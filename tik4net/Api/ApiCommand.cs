@@ -238,7 +238,6 @@ namespace tik4net.Api
                 string[] commandRows = ConstructCommandText(TikCommandParameterFormat.NameValue);
                 IEnumerable<ApiSentence> response = EnsureApiSentences(_connection.CallCommandSync(commandRows));
                 ThrowPossibleResponseError(response.ToArray());
-
                 ApiSentence responseSentence = EnsureSingleResponse(response);
                 EnsureDoneResponse(responseSentence);
             }

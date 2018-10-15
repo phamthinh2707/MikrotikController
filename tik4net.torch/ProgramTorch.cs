@@ -22,19 +22,21 @@ namespace tik4net.torch
             // looking for volunteers :-)
 
             using (ITikConnection connection = ConnectionFactory.CreateConnection(TikConnectionType.Api))
-            {                
+            {
                 connection.Open(ConfigurationManager.AppSettings["host"], ConfigurationManager.AppSettings["user"], ConfigurationManager.AppSettings["pass"]);
                 string interfaceName = ConfigurationManager.AppSettings["interface"];
 
                 Console.Clear();
 
-                var loadingContext = connection.LoadAsync<ToolTorch>(
-                    TorchItemRead, error => Console.WriteLine(error.ToString()),                                                
+                var loadingContext = connection.LoadAsync<ToolTorch>
+                    (
+                    TorchItemRead, error => Console.WriteLine(error.ToString()),
                     connection.CreateParameter("interface", interfaceName),
                     connection.CreateParameter("ip-protocol", "any"),
                     connection.CreateParameter("port", "any"),
                     connection.CreateParameter("src-address", "0.0.0.0/0"),
-                    connection.CreateParameter("dst-address", "0.0.0.0/0"));
+                    connection.CreateParameter("dst-address", "0.0.0.0/0")
+                    );
 
                 Console.ReadLine();
 

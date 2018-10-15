@@ -14,6 +14,9 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
+using tik4net.Objects.Interface;
+using tik4net.Objects;
+
 
 namespace tik4net.controller
 {
@@ -232,6 +235,14 @@ namespace tik4net.controller
                     ExecuteParameterCommand(commandRows);
                 }
             }
+            //using (var conn = tik4net.ConnectionFactory.OpenConnection(TikConnectionType.Api, "192.168.88.1", 8728, "admin", ""))
+            //{
+            //    var obj = conn.LoadList<InterfaceWireless>(conn.CreateParameter("default-name", "wlan1")).First();
+            //    obj.Disabled = false;
+            //    obj.Mode = tik4net.Objects.Interface.InterfaceWireless.WirelessMode.ApBridge;
+            //    obj.Ssid = "Testing Wifi Marketing";
+            //    conn.Save(obj);
+            //}
         }
         //
         // Get Router MAC
@@ -256,6 +267,11 @@ namespace tik4net.controller
             UserMangementForm umf = new UserMangementForm();
             umf.getter(connection);
             umf.ShowDialog();
+        }
+
+        private void btnBasicSetting_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
