@@ -105,8 +105,19 @@ namespace tik4net.controller
 
         private void btnFinish_Click(object sender, EventArgs e)
         {
-            this.page3.Visible = false;
-            using (StreamReader stream = new StreamReader("G:/Study's data/OJT/Script Basic API.json"))
+            if (txtWpa.Text.Length < 8 || txtWpa.Text.Length > 63) {
+                MessageBox.Show("The WPA pre-shared key must between 8-63 charaters!", "ERROR!", MessageBoxButtons.OK);
+                return; 
+            }
+            else
+            {
+                if (txtWpa2.Text.Length < 8 || txtWpa2.Text.Length > 63)
+                {
+                    MessageBox.Show("The WPA2 pre-shared key key must between 8-63 charaters!", "ERROR!", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            using (StreamReader stream = new StreamReader("G:/Study's data/OJT/Script Basic Configuration.json"))
             {
                 var str = stream.ReadToEnd();
                 var scripts = JsonConvert.DeserializeObject<List<Script>>(str);
