@@ -105,7 +105,6 @@ namespace tik4net.controller
 
         private void btnFinish_Click(object sender, EventArgs e)
         {
-            //something to commit
             if (txtWpa.Text.Length < 8 || txtWpa.Text.Length > 63) {
                 MessageBox.Show("The WPA pre-shared key must between 8-63 charaters!", "ERROR!", MessageBoxButtons.OK);
                 return; 
