@@ -46,6 +46,7 @@
             this.btnWallGarden = new System.Windows.Forms.Button();
             this.btnNatPort = new System.Windows.Forms.Button();
             this.btnEncryptPassword = new System.Windows.Forms.Button();
+            this.btnGetMAC = new System.Windows.Forms.Button();
             this.btnUserManagement = new System.Windows.Forms.Button();
             this.btnBasicSetting = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -53,6 +54,10 @@
             this.btnSubmit = new System.Windows.Forms.Button();
             this.rtxDisplay = new System.Windows.Forms.RichTextBox();
             this.txtCommand = new System.Windows.Forms.TextBox();
+<<<<<<< HEAD
+=======
+            this.btnBasicConfig = new System.Windows.Forms.Button();
+>>>>>>> 15421cde43f7963d5f994d858d919dd26245690c
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableOption.SuspendLayout();
@@ -102,7 +107,7 @@
             this.txtHost.Name = "txtHost";
             this.txtHost.Size = new System.Drawing.Size(214, 20);
             this.txtHost.TabIndex = 5;
-            this.txtHost.Text = "192.168.120.1";
+            this.txtHost.Text = "192.168.253.2";
             // 
             // lblUser
             // 
@@ -203,17 +208,19 @@
             this.tableOption.Controls.Add(this.btnWallGarden, 1, 1);
             this.tableOption.Controls.Add(this.btnNatPort, 0, 2);
             this.tableOption.Controls.Add(this.btnEncryptPassword, 1, 2);
+            this.tableOption.Controls.Add(this.btnGetMAC, 0, 3);
             this.tableOption.Controls.Add(this.btnUserManagement, 1, 3);
-            this.tableOption.Controls.Add(this.btnBasicSetting, 0, 3);
+            this.tableOption.Controls.Add(this.btnBasicConfig);
             this.tableOption.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableOption.Location = new System.Drawing.Point(3, 139);
             this.tableOption.Name = "tableOption";
-            this.tableOption.RowCount = 4;
-            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableOption.Size = new System.Drawing.Size(214, 112);
+            this.tableOption.RowCount = 5;
+            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableOption.Size = new System.Drawing.Size(214, 143);
             this.tableOption.TabIndex = 12;
             this.tableOption.Visible = false;
             // 
@@ -286,6 +293,17 @@
             this.btnEncryptPassword.TabIndex = 5;
             this.btnEncryptPassword.Text = "Encrypt Password";
             this.btnEncryptPassword.UseVisualStyleBackColor = true;
+            // 
+            // btnGetMAC
+            // 
+            this.btnGetMAC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnGetMAC.Location = new System.Drawing.Point(3, 87);
+            this.btnGetMAC.Name = "btnGetMAC";
+            this.btnGetMAC.Size = new System.Drawing.Size(101, 22);
+            this.btnGetMAC.TabIndex = 6;
+            this.btnGetMAC.Text = "Get MAC";
+            this.btnGetMAC.UseVisualStyleBackColor = true;
+            this.btnGetMAC.Click += new System.EventHandler(this.btnGetMAC_Click);
             // 
             // btnUserManagement
             // 
@@ -370,6 +388,20 @@
             this.txtCommand.TabIndex = 1;
             this.txtCommand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCommand_KeyPress);
             // 
+<<<<<<< HEAD
+=======
+            // btnBasicConfig
+            // 
+            this.btnBasicConfig.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnBasicConfig.Location = new System.Drawing.Point(3, 115);
+            this.btnBasicConfig.Name = "btnBasicConfig";
+            this.btnBasicConfig.Size = new System.Drawing.Size(101, 25);
+            this.btnBasicConfig.TabIndex = 8;
+            this.btnBasicConfig.Text = "Basic Config";
+            this.btnBasicConfig.UseVisualStyleBackColor = true;
+            this.btnBasicConfig.Click += new System.EventHandler(this.btnBasicConfig_Click);
+            // 
+>>>>>>> 15421cde43f7963d5f994d858d919dd26245690c
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,7 +409,7 @@
             this.ClientSize = new System.Drawing.Size(951, 489);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
-            this.Text = "Mikrotik Controller";
+            this.Text = "Form1";
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -414,8 +446,9 @@
         private System.Windows.Forms.Button btnWallGarden;
         private System.Windows.Forms.Button btnNatPort;
         private System.Windows.Forms.Button btnEncryptPassword;
+        private System.Windows.Forms.Button btnGetMAC;
         private System.Windows.Forms.Button btnUserManagement;
-        private System.Windows.Forms.Button btnBasicSetting;
+        private System.Windows.Forms.Button btnBasicConfig;
     }
 }
 

@@ -232,7 +232,7 @@ namespace tik4net.controller
                     {
                         commandRows.Add(row);
                     }
-                    ExecuteParameterCommand(commandRows);
+                        
                 }
             }
             //using (var conn = tik4net.ConnectionFactory.OpenConnection(TikConnectionType.Api, "192.168.88.1", 8728, "admin", ""))
@@ -269,9 +269,17 @@ namespace tik4net.controller
             umf.ShowDialog();
         }
 
+<<<<<<< HEAD
         private void btnBasicSetting_Click(object sender, EventArgs e)
         {
 
+=======
+        private void btnBasicConfig_Click(object sender, EventArgs e)
+        {
+            BasicConfigurationForm basicConfig = new BasicConfigurationForm();
+            basicConfig.getter(connection);
+            basicConfig.ShowDialog();
+>>>>>>> 15421cde43f7963d5f994d858d919dd26245690c
         }
     }
 }

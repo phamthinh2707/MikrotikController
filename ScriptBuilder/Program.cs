@@ -19,12 +19,13 @@ namespace ScriptBuilder
 
         private static List<string> ListScriptDirectories = new List<string>()
         {
-            "C:/Users/firel/Desktop/Script1.txt",
-            "C:/Users/firel/Desktop/Script2.txt",
-            "C:/Users/firel/Desktop/Script3.txt",
-            "C:/Users/firel/Desktop/Script4.txt",
-            "C:/Users/firel/Desktop/Script5.txt",
-            "C:/Users/firel/Desktop/Script-Wifi-Marketing-API.txt",
+            //"C:/Users/firel/Desktop/Script1.txt",
+            //"C:/Users/firel/Desktop/Script2.txt",
+            //"C:/Users/firel/Desktop/Script3.txt",
+            //"C:/Users/firel/Desktop/Script4.txt",
+            //"C:/Users/firel/Desktop/Script5.txt",
+            //"C:/Users/firel/Desktop/Script-Wifi-Marketing-API.txt",
+            "G:/Study's data/OJT/Script Basic API.txt"
         };
 
         static void Main(string[] args)
@@ -42,7 +43,7 @@ namespace ScriptBuilder
                 i++;
             }
             string result = JsonConvert.SerializeObject(listScript);
-            System.IO.File.WriteAllText("C:/Users/firel/Desktop/Script.json", result);
+            System.IO.File.WriteAllText("G:/Study's data/OJT/Script Basic API.json", result);
         }
     }
 }
