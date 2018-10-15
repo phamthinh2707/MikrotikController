@@ -27,7 +27,7 @@ namespace tik4net.controller
             connection = conn;
         }
         //-------------------------------------------User--------------------------------------//
-        private class User
+        public class User
         {
             public string name { get; set; }
             public string group { get; set; }
@@ -89,6 +89,7 @@ namespace tik4net.controller
             {
                 object[] Rows = new object[]
                 {
+                    amountOfUser,
                     u.name,
                     u.group,
                     u.address,
@@ -101,7 +102,7 @@ namespace tik4net.controller
             #region Render Color for User Grid View
             foreach (DataGridViewRow row in UserGridView.Rows)
             {
-                if (Convert.ToBoolean(row.Cells[4].Value))
+                if (Convert.ToBoolean(row.Cells[5].Value))
                 {
                     row.DefaultCellStyle.ForeColor = Color.Gray;
                 }
@@ -117,10 +118,12 @@ namespace tik4net.controller
         //
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            commandRows.Add("/user/group/print");
             AddUserForm auf = new AddUserForm();
             auf.getter(connection);
             auf.ShowDialog();
+            UserGridView.Rows.Clear();
+            commandRows.Add("/user/print");
+            displayUsers(getUsers(commandRows));
         }
         //
         // Remove User Button
@@ -138,10 +141,10 @@ namespace tik4net.controller
             {
                 MessageBox.Show("Couldn't change User <admin>");
             }
-            GroupGridView.Refresh();
-            GroupGridView.Rows.Clear();
+            UserGridView.Refresh();
+            UserGridView.Rows.Clear();
             commandRows.Add("/user/print");
-            displayGroup(getGroups(commandRows));
+            displayUsers(getUsers(commandRows));
         }
         //
         // Enable User Button   
@@ -174,6 +177,22 @@ namespace tik4net.controller
             {
                 MessageBox.Show("Couldn't change User <admin>");
             }
+        }
+        //
+        // Edit User
+        //
+        private void btnEditUser_Click(object sender, EventArgs e)
+        {
+            List<string> userData = new List<string>();
+            userData.Add(UserGridView.CurrentRow.Cells["Numbers"].FormattedValue.ToString());
+            userData.Add(UserGridView.CurrentRow.Cells["username"].FormattedValue.ToString());
+            userData.Add(UserGridView.CurrentRow.Cells["userGroup"].FormattedValue.ToString());
+            userData.Add(UserGridView.CurrentRow.Cells["userAddress"].FormattedValue.ToString());
+            userData.Add(UserGridView.CurrentRow.Cells["userLastLogin"].FormattedValue.ToString());
+            EditUserForm euf = new EditUserForm();
+            euf.getter(connection);
+            euf.userGetter(userData);
+            euf.ShowDialog();
         }
 
         //-------------------------------------------Active User--------------------------------//
@@ -320,9 +339,7 @@ namespace tik4net.controller
         //
         private void btnAddGroup_Click(object sender, EventArgs e)
         {
-            AddUserForm auf = new AddUserForm();
-            auf.getter(connection);
-            auf.ShowDialog();
+
         }
         //
         // Remove Group
@@ -394,13 +411,6 @@ namespace tik4net.controller
             commandRows.Clear();
             commandRows.Add("/user/active/print");
             displayActiveUsers(getActiveUsers(commandRows));
-        }
-        //
-        // Edit User
-        //
-        private void btnEditUser_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

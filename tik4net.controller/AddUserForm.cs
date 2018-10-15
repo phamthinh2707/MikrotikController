@@ -127,6 +127,7 @@ namespace tik4net.controller
                 commandRows.Add("=group=" + cbGroup.SelectedItem.ToString());
                 commandRows.Add("=password=" + txtPassword.Text);
                 ExecuteParameterCommand(commandRows);
+                Close();
             }
         }
         //

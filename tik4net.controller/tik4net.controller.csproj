@@ -61,6 +61,12 @@
     <Compile Include="BasicConfigurationForm.Designer.cs">
       <DependentUpon>BasicConfigurationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditUserForm.Designer.cs">
+      <DependentUpon>EditUserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BasicConfigurationForm.resx">
       <DependentUpon>BasicConfigurationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditUserForm.resx">
+      <DependentUpon>EditUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

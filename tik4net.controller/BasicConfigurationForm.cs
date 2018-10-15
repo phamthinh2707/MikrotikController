@@ -105,10 +105,7 @@ namespace tik4net.controller
 
         private void btnFinish_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            this.page3.Visible = false;
             using (StreamReader stream = new StreamReader("D:/GitHub/MikrotikController/Json File/Script Basic API.json"))
-=======
             if (txtWpa.Text.Length < 8 || txtWpa.Text.Length > 63) {
                 MessageBox.Show("The WPA pre-shared key must between 8-63 charaters!", "ERROR!", MessageBoxButtons.OK);
                 return; 
@@ -122,7 +119,6 @@ namespace tik4net.controller
                 }
             }
             using (StreamReader stream = new StreamReader("G:/Study's data/OJT/Script Basic Configuration.json"))
->>>>>>> 9304a9f2b336576452857122d671158ea032526d
             {
                 var str = stream.ReadToEnd();
                 var scripts = JsonConvert.DeserializeObject<List<Script>>(str);

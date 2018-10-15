@@ -63,6 +63,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.statusStrip3 = new System.Windows.Forms.StatusStrip();
             this.AmountOfActiveUser = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Numbers = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -133,6 +134,7 @@
             this.UserGridView.AllowUserToResizeRows = false;
             this.UserGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UserGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Numbers,
             this.username,
             this.userGroup,
             this.userAddress,
@@ -141,7 +143,10 @@
             this.UserGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UserGridView.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.UserGridView.Location = new System.Drawing.Point(3, 42);
+            this.UserGridView.MultiSelect = false;
             this.UserGridView.Name = "UserGridView";
+            this.UserGridView.ReadOnly = true;
+            this.UserGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.UserGridView.Size = new System.Drawing.Size(743, 351);
             this.UserGridView.TabIndex = 0;
             // 
@@ -176,6 +181,7 @@
             this.btnEditUser.TabIndex = 11;
             this.btnEditUser.Text = "Edit";
             this.btnEditUser.UseVisualStyleBackColor = true;
+            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
             // 
             // btnRemoveUser
             // 
@@ -186,6 +192,7 @@
             this.btnRemoveUser.TabIndex = 9;
             this.btnRemoveUser.Text = "Remove";
             this.btnRemoveUser.UseVisualStyleBackColor = true;
+            this.btnRemoveUser.Click += new System.EventHandler(this.btnRemoveUser_Click);
             // 
             // btnAddUser
             // 
@@ -320,6 +327,8 @@
             this.GroupGridView.AllowUserToDeleteRows = false;
             this.GroupGridView.AllowUserToResizeColumns = false;
             this.GroupGridView.AllowUserToResizeRows = false;
+            this.GroupGridView.BackgroundColor = System.Drawing.Color.AliceBlue;
+            this.GroupGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.GroupGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GroupGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameGroup,
@@ -328,7 +337,10 @@
             this.GroupGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GroupGridView.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.GroupGridView.Location = new System.Drawing.Point(3, 42);
+            this.GroupGridView.MultiSelect = false;
             this.GroupGridView.Name = "GroupGridView";
+            this.GroupGridView.ReadOnly = true;
+            this.GroupGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GroupGridView.Size = new System.Drawing.Size(743, 351);
             this.GroupGridView.TabIndex = 1;
             // 
@@ -336,17 +348,20 @@
             // 
             this.nameGroup.HeaderText = "Name";
             this.nameGroup.Name = "nameGroup";
+            this.nameGroup.ReadOnly = true;
             // 
             // policiesGroup
             // 
             this.policiesGroup.HeaderText = "Policies";
             this.policiesGroup.Name = "policiesGroup";
+            this.policiesGroup.ReadOnly = true;
             this.policiesGroup.Width = 500;
             // 
             // skinGroup
             // 
             this.skinGroup.HeaderText = "Skin";
             this.skinGroup.Name = "skinGroup";
+            this.skinGroup.ReadOnly = true;
             // 
             // statusStrip2
             // 
@@ -406,7 +421,10 @@
             this.ActiveUserGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ActiveUserGridView.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.ActiveUserGridView.Location = new System.Drawing.Point(3, 42);
+            this.ActiveUserGridView.MultiSelect = false;
             this.ActiveUserGridView.Name = "ActiveUserGridView";
+            this.ActiveUserGridView.ReadOnly = true;
+            this.ActiveUserGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ActiveUserGridView.Size = new System.Drawing.Size(743, 351);
             this.ActiveUserGridView.TabIndex = 0;
             // 
@@ -414,24 +432,28 @@
             // 
             this.ActiveUserName.HeaderText = "Name";
             this.ActiveUserName.Name = "ActiveUserName";
+            this.ActiveUserName.ReadOnly = true;
             this.ActiveUserName.Width = 175;
             // 
             // TimeLoggedIn
             // 
             this.TimeLoggedIn.HeaderText = "At";
             this.TimeLoggedIn.Name = "TimeLoggedIn";
+            this.TimeLoggedIn.ReadOnly = true;
             this.TimeLoggedIn.Width = 175;
             // 
             // ActiveAddress
             // 
             this.ActiveAddress.HeaderText = "Address";
             this.ActiveAddress.Name = "ActiveAddress";
+            this.ActiveAddress.ReadOnly = true;
             this.ActiveAddress.Width = 175;
             // 
             // VIA
             // 
             this.VIA.HeaderText = "Via";
             this.VIA.Name = "VIA";
+            this.VIA.ReadOnly = true;
             this.VIA.Width = 175;
             // 
             // tableLayoutPanel6
@@ -472,34 +494,46 @@
             this.AmountOfActiveUser.Size = new System.Drawing.Size(66, 17);
             this.AmountOfActiveUser.Text = "Active User";
             // 
+            // Numbers
+            // 
+            this.Numbers.HeaderText = "No.";
+            this.Numbers.Name = "Numbers";
+            this.Numbers.ReadOnly = true;
+            this.Numbers.Width = 75;
+            // 
             // username
             // 
             this.username.HeaderText = "Name";
             this.username.Name = "username";
+            this.username.ReadOnly = true;
             this.username.Width = 150;
             // 
             // userGroup
             // 
             this.userGroup.HeaderText = "Group";
             this.userGroup.Name = "userGroup";
+            this.userGroup.ReadOnly = true;
             // 
             // userAddress
             // 
             this.userAddress.HeaderText = "Address";
             this.userAddress.Name = "userAddress";
+            this.userAddress.ReadOnly = true;
             this.userAddress.Width = 150;
             // 
             // userLastLogin
             // 
             this.userLastLogin.HeaderText = "Last-Logged-In";
             this.userLastLogin.Name = "userLastLogin";
+            this.userLastLogin.ReadOnly = true;
             this.userLastLogin.Width = 150;
             // 
             // Status
             // 
             this.Status.HeaderText = "Status";
             this.Status.Name = "Status";
-            this.Status.Width = 150;
+            this.Status.ReadOnly = true;
+            this.Status.Width = 75;
             // 
             // UserMangementForm
             // 
@@ -576,6 +610,7 @@
         private System.Windows.Forms.Button btnRemoveUser;
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Numbers;
         private System.Windows.Forms.DataGridViewTextBoxColumn username;
         private System.Windows.Forms.DataGridViewTextBoxColumn userGroup;
         private System.Windows.Forms.DataGridViewTextBoxColumn userAddress;

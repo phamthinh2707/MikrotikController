@@ -32,14 +32,14 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtAddHost = new System.Windows.Forms.TextBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnOk = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clDstHost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clHits = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -99,9 +99,40 @@
             this.clHits});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(3, 26);
+            this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(366, 370);
             this.dataGridView.TabIndex = 2;
+            // 
+            // STT
+            // 
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            this.STT.ReadOnly = true;
+            this.STT.Width = 50;
+            // 
+            // clAction
+            // 
+            this.clAction.HeaderText = "Action";
+            this.clAction.Name = "clAction";
+            this.clAction.ReadOnly = true;
+            this.clAction.Width = 50;
+            // 
+            // clDstHost
+            // 
+            this.clDstHost.HeaderText = "Dst.Host";
+            this.clDstHost.Name = "clDstHost";
+            this.clDstHost.ReadOnly = true;
+            this.clDstHost.Width = 160;
+            // 
+            // clHits
+            // 
+            this.clHits.HeaderText = "Hits";
+            this.clHits.Name = "clHits";
+            this.clHits.ReadOnly = true;
+            this.clHits.Width = 50;
             // 
             // tableLayoutPanel3
             // 
@@ -155,33 +186,6 @@
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // STT
-            // 
-            this.STT.HeaderText = "STT";
-            this.STT.Name = "STT";
-            this.STT.Width = 50;
-            // 
-            // clAction
-            // 
-            this.clAction.HeaderText = "Action";
-            this.clAction.Name = "clAction";
-            this.clAction.ReadOnly = true;
-            this.clAction.Width = 50;
-            // 
-            // clDstHost
-            // 
-            this.clDstHost.HeaderText = "Dst.Host";
-            this.clDstHost.Name = "clDstHost";
-            this.clDstHost.ReadOnly = true;
-            this.clDstHost.Width = 160;
-            // 
-            // clHits
-            // 
-            this.clHits.HeaderText = "Hits";
-            this.clHits.Name = "clHits";
-            this.clHits.ReadOnly = true;
-            this.clHits.Width = 50;
             // 
             // WalledGardenForm
             // 

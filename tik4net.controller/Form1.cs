@@ -159,6 +159,7 @@ namespace tik4net.controller
                 if (txtCommand.Text.Equals("clear"))
                 {
                     rtxDisplay.Text = "";
+                    txtCommand.Text = "";
                 }
                 else
                 {
