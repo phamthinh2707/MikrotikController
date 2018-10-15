@@ -47,12 +47,13 @@
             this.btnNatPort = new System.Windows.Forms.Button();
             this.btnEncryptPassword = new System.Windows.Forms.Button();
             this.btnGetMAC = new System.Windows.Forms.Button();
+            this.btnUserManagement = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.rtxDisplay = new System.Windows.Forms.RichTextBox();
             this.txtCommand = new System.Windows.Forms.TextBox();
-            this.btnUserManagement = new System.Windows.Forms.Button();
+            this.btnBasicConfig = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableOption.SuspendLayout();
@@ -102,7 +103,7 @@
             this.txtHost.Name = "txtHost";
             this.txtHost.Size = new System.Drawing.Size(214, 20);
             this.txtHost.TabIndex = 5;
-            this.txtHost.Text = "192.168.120.1";
+            this.txtHost.Text = "192.168.253.2";
             // 
             // lblUser
             // 
@@ -205,15 +206,17 @@
             this.tableOption.Controls.Add(this.btnEncryptPassword, 1, 2);
             this.tableOption.Controls.Add(this.btnGetMAC, 0, 3);
             this.tableOption.Controls.Add(this.btnUserManagement, 1, 3);
+            this.tableOption.Controls.Add(this.btnBasicConfig);
             this.tableOption.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableOption.Location = new System.Drawing.Point(3, 139);
             this.tableOption.Name = "tableOption";
-            this.tableOption.RowCount = 4;
-            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableOption.Size = new System.Drawing.Size(214, 112);
+            this.tableOption.RowCount = 5;
+            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableOption.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableOption.Size = new System.Drawing.Size(214, 143);
             this.tableOption.TabIndex = 12;
             this.tableOption.Visible = false;
             // 
@@ -298,6 +301,17 @@
             this.btnGetMAC.UseVisualStyleBackColor = true;
             this.btnGetMAC.Click += new System.EventHandler(this.btnGetMAC_Click);
             // 
+            // btnUserManagement
+            // 
+            this.btnUserManagement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUserManagement.Location = new System.Drawing.Point(110, 87);
+            this.btnUserManagement.Name = "btnUserManagement";
+            this.btnUserManagement.Size = new System.Drawing.Size(101, 22);
+            this.btnUserManagement.TabIndex = 7;
+            this.btnUserManagement.Text = "User Manage";
+            this.btnUserManagement.UseVisualStyleBackColor = true;
+            this.btnUserManagement.Click += new System.EventHandler(this.btnUserManagement_Click);
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
@@ -359,16 +373,16 @@
             this.txtCommand.TabIndex = 1;
             this.txtCommand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCommand_KeyPress);
             // 
-            // btnUserManagement
+            // btnBasicConfig
             // 
-            this.btnUserManagement.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnUserManagement.Location = new System.Drawing.Point(110, 87);
-            this.btnUserManagement.Name = "btnUserManagement";
-            this.btnUserManagement.Size = new System.Drawing.Size(101, 22);
-            this.btnUserManagement.TabIndex = 7;
-            this.btnUserManagement.Text = "User Manage";
-            this.btnUserManagement.UseVisualStyleBackColor = true;
-            this.btnUserManagement.Click += new System.EventHandler(this.btnUserManagement_Click);
+            this.btnBasicConfig.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnBasicConfig.Location = new System.Drawing.Point(3, 115);
+            this.btnBasicConfig.Name = "btnBasicConfig";
+            this.btnBasicConfig.Size = new System.Drawing.Size(101, 25);
+            this.btnBasicConfig.TabIndex = 8;
+            this.btnBasicConfig.Text = "Basic Config";
+            this.btnBasicConfig.UseVisualStyleBackColor = true;
+            this.btnBasicConfig.Click += new System.EventHandler(this.btnBasicConfig_Click);
             // 
             // Form1
             // 
@@ -416,6 +430,7 @@
         private System.Windows.Forms.Button btnEncryptPassword;
         private System.Windows.Forms.Button btnGetMAC;
         private System.Windows.Forms.Button btnUserManagement;
+        private System.Windows.Forms.Button btnBasicConfig;
     }
 }
 

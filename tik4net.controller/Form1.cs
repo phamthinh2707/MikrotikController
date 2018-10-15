@@ -229,7 +229,7 @@ namespace tik4net.controller
                     {
                         commandRows.Add(row);
                     }
-                    ExecuteParameterCommand(commandRows);
+                        
                 }
             }
         }
@@ -256,6 +256,13 @@ namespace tik4net.controller
             UserMangementForm umf = new UserMangementForm();
             umf.getter(connection);
             umf.ShowDialog();
+        }
+
+        private void btnBasicConfig_Click(object sender, EventArgs e)
+        {
+            BasicConfigurationForm basicConfig = new BasicConfigurationForm();
+            basicConfig.getter(connection);
+            basicConfig.ShowDialog();
         }
     }
 }
