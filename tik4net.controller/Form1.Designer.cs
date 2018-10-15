@@ -1,4 +1,7 @@
-﻿namespace tik4net.controller
+﻿using System;
+using System.Windows.Forms;
+
+namespace tik4net.controller
 {
     partial class Form1
     {
@@ -48,16 +51,13 @@
             this.btnEncryptPassword = new System.Windows.Forms.Button();
             this.btnGetMAC = new System.Windows.Forms.Button();
             this.btnUserManagement = new System.Windows.Forms.Button();
+            this.btnBasicConfig = new System.Windows.Forms.Button();
             this.btnBasicSetting = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.rtxDisplay = new System.Windows.Forms.RichTextBox();
             this.txtCommand = new System.Windows.Forms.TextBox();
-<<<<<<< HEAD
-=======
-            this.btnBasicConfig = new System.Windows.Forms.Button();
->>>>>>> 15421cde43f7963d5f994d858d919dd26245690c
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableOption.SuspendLayout();
@@ -316,6 +316,17 @@
             this.btnUserManagement.UseVisualStyleBackColor = true;
             this.btnUserManagement.Click += new System.EventHandler(this.btnUserManagement_Click);
             // 
+            // btnBasicConfig
+            // 
+            this.btnBasicConfig.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnBasicConfig.Location = new System.Drawing.Point(3, 115);
+            this.btnBasicConfig.Name = "btnBasicConfig";
+            this.btnBasicConfig.Size = new System.Drawing.Size(101, 25);
+            this.btnBasicConfig.TabIndex = 8;
+            this.btnBasicConfig.Text = "Basic Config";
+            this.btnBasicConfig.UseVisualStyleBackColor = true;
+            this.btnBasicConfig.Click += new System.EventHandler(this.btnBasicConfig_Click);
+            // 
             // btnBasicSetting
             // 
             this.btnBasicSetting.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -388,20 +399,6 @@
             this.txtCommand.TabIndex = 1;
             this.txtCommand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCommand_KeyPress);
             // 
-<<<<<<< HEAD
-=======
-            // btnBasicConfig
-            // 
-            this.btnBasicConfig.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnBasicConfig.Location = new System.Drawing.Point(3, 115);
-            this.btnBasicConfig.Name = "btnBasicConfig";
-            this.btnBasicConfig.Size = new System.Drawing.Size(101, 25);
-            this.btnBasicConfig.TabIndex = 8;
-            this.btnBasicConfig.Text = "Basic Config";
-            this.btnBasicConfig.UseVisualStyleBackColor = true;
-            this.btnBasicConfig.Click += new System.EventHandler(this.btnBasicConfig_Click);
-            // 
->>>>>>> 15421cde43f7963d5f994d858d919dd26245690c
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -448,6 +445,7 @@
         private System.Windows.Forms.Button btnEncryptPassword;
         private System.Windows.Forms.Button btnGetMAC;
         private System.Windows.Forms.Button btnUserManagement;
+        private Button btnBasicSetting;
         private System.Windows.Forms.Button btnBasicConfig;
     }
 }

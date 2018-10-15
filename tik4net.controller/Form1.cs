@@ -117,7 +117,8 @@ namespace tik4net.controller
                     {
                         MessageBox.Show(ex.ToString());
                     }
-                } else
+                }
+                else
                 {
                     MessageBox.Show("Please Enter Your Host and Password.");
                 }
@@ -232,7 +233,7 @@ namespace tik4net.controller
                     {
                         commandRows.Add(row);
                     }
-                        
+
                 }
             }
             //using (var conn = tik4net.ConnectionFactory.OpenConnection(TikConnectionType.Api, "192.168.88.1", 8728, "admin", ""))
@@ -251,9 +252,9 @@ namespace tik4net.controller
         {
             NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
             String MACAddress = string.Empty;
-            foreach(NetworkInterface adapter in nics)
+            foreach (NetworkInterface adapter in nics)
             {
-                if(MACAddress == String.Empty)
+                if (MACAddress == String.Empty)
                 {
                     IPInterfaceProperties properties = adapter.GetIPProperties();
                     MACAddress = adapter.GetPhysicalAddress().ToString();
@@ -269,17 +270,16 @@ namespace tik4net.controller
             umf.ShowDialog();
         }
 
-<<<<<<< HEAD
         private void btnBasicSetting_Click(object sender, EventArgs e)
         {
 
-=======
+        }
+
         private void btnBasicConfig_Click(object sender, EventArgs e)
         {
             BasicConfigurationForm basicConfig = new BasicConfigurationForm();
             basicConfig.getter(connection);
             basicConfig.ShowDialog();
->>>>>>> 15421cde43f7963d5f994d858d919dd26245690c
         }
     }
 }
